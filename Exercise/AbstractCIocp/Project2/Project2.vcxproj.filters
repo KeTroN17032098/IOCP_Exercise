@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="BasicThing.h">
+      <Filter>Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="ISocket.h">
+      <Filter>SessionM</Filter>
+    </ClInclude>
+    <ClInclude Include="ISessionManager.h">
+      <Filter>SessionM</Filter>
+    </ClInclude>
+    <ClInclude Include="ISession.h">
+      <Filter>SessionM</Filter>
+    </ClInclude>
+    <ClInclude Include="IPacket.h">
+      <Filter>SessionM</Filter>
+    </ClInclude>
+    <ClInclude Include="DBManager.h">
+      <Filter>VariousManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginManager.h">
+      <Filter>VariousManagers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AbstractIOCP.h">
+      <Filter>AbstractThings</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractIOCP.cpp">
+      <Filter>AbstractThings</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicThing.cpp">
+      <Filter>Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="ISocket.cpp">
+      <Filter>SessionM</Filter>
+    </ClCompile>
+    <ClCompile Include="ISessionManager.cpp">
+      <Filter>SessionM</Filter>
+    </ClCompile>
+    <ClCompile Include="IPacket.cpp">
+      <Filter>SessionM</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="DBManager.cpp">
+      <Filter>VariousManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginManager.cpp">
+      <Filter>VariousManagers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="AbstractThings">
+      <UniqueIdentifier>{2c3bbea9-650a-44d1-8690-85aff7884347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basic">
+      <UniqueIdentifier>{caa43c02-0d89-4ee5-ada3-9e62488e88c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SessionM">
+      <UniqueIdentifier>{128df31a-9482-4c71-9f56-10cd26623b84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VariousManagers">
+      <UniqueIdentifier>{6d5936f3-1b5d-4dfa-b71d-15f652e6c238}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
