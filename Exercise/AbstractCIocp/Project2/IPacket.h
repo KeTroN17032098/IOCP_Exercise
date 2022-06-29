@@ -30,6 +30,11 @@ public:
 		return true;
 	}
 
+	bool is_sendleft()
+	{
+		return (sendbuf.size() > 0);
+	}
+
 	void clearRecvbuf()
 	{
 		recvbuf->recvclear();

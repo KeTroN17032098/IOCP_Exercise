@@ -1,5 +1,7 @@
 #pragma once
+
 #include"BasicThing.h"
+#include"LogManager.h"
 
 class _VIRTUALIOCP // °¡»ó IOCP
 {
@@ -8,9 +10,19 @@ public:
 	virtual void recv(void* session, DWORD cbTransferred) abstract;
 	virtual void send(void* session, DWORD cbTransferred) abstract;
 	virtual void disconnect(int retval, void* session) abstract;
-	virtual void init(int portno) abstract;
-	virtual void end() abstract;
-	virtual void run() abstract;
-	virtual HANDLE getHCP() abstract;
+
+	void init();
+	void end();
+	void PostAccept(SOCKET s);
+
+
 	static DWORD WINAPI WorkerThread(LPVOID arg);
+
+	_VIRTUALIOCP();
+	virtual ~_VIRTUALIOCP();
+private:
+	HANDLE hcp;
+	HANDLE* threads;
+	int count;
+	ExOverlapped accept_overlapped;
 };

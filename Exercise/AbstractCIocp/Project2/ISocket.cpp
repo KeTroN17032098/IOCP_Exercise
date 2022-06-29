@@ -11,14 +11,12 @@ ISocket::ISocket(SOCKET s)
 	ex1.type = recvIO;
 	ex2.clientLP = this;
 	ex2.type = sendIO;
-	ZeroMemory(&wsabuf, sizeof(WSABUF));
 }
 
 ISocket::~ISocket()
 {
 	ZeroMemory(&ex1, sizeof(ExOverlapped));
 	ZeroMemory(&ex2, sizeof(ExOverlapped));
-	ZeroMemory(&wsabuf, sizeof(WSABUF));
 	closesocket(s);
 }
 
@@ -57,12 +55,16 @@ bool ISocket::send(char* buf, int size)
 	int retval;
 	DWORD sendbytes;
 	DWORD flags = 0;
+	WSABUF wsabuf;
+
 
 	ZeroMemory(&this->ex2.overlapped, sizeof(WSAOVERLAPPED));
-	this->wsabuf.buf = buf;
-	this->wsabuf.len = size;
+	ZeroMemory(&wsabuf, sizeof(WSABUF));
 
-	retval = WSASend(this->s, &this->wsabuf, 1, &sendbytes, flags, &this->ex2.overlapped, NULL);
+	wsabuf.buf = buf;
+	wsabuf.len = size;
+
+	retval = WSASend(this->s, &wsabuf, 1, &sendbytes, flags, &this->ex2.overlapped, NULL);
 	if (retval == SOCKET_ERROR)
 	{
 		if (WSAGetLastError() != WSA_IO_PENDING)
@@ -78,12 +80,14 @@ bool ISocket::recv(char* buf, int size)
 	int retval;
 	DWORD sendbytes;
 	DWORD flags = 0;
+	WSABUF wsabuf;
 
 	ZeroMemory(&this->ex1.overlapped, sizeof(WSAOVERLAPPED));
-	this->wsabuf.buf = buf;
-	this->wsabuf.len = size;
+	ZeroMemory(&wsabuf, sizeof(WSABUF));
+	wsabuf.buf = buf;
+	wsabuf.len = size;
 
-	retval = WSARecv(this->s, &this->wsabuf, 1, &sendbytes, &flags, &this->ex1.overlapped, NULL);
+	retval = WSARecv(this->s, &wsabuf, 1, &sendbytes, &flags, &this->ex1.overlapped, NULL);
 	if (retval == SOCKET_ERROR)
 	{
 		if (WSAGetLastError() != WSA_IO_PENDING)

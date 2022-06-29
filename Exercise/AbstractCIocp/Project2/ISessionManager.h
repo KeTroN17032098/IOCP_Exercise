@@ -12,7 +12,7 @@ private:
 public:
 	static void createinstance()
 	{
-		instance = new ISessionManager();
+		if (instance == nullptr)instance = new ISessionManager();
 	}
 	static ISessionManager* getinstance()
 	{

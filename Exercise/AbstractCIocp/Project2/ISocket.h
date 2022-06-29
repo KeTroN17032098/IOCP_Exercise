@@ -8,7 +8,7 @@ private:
 	SOCKADDR_IN addr;
 	ExOverlapped ex1;
 	ExOverlapped ex2;
-	WSABUF wsabuf;
+
 public:
 	ISocket(SOCKET s);
 	virtual ~ISocket();

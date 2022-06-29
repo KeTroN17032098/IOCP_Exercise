@@ -56,6 +56,8 @@ bool IPacket::sendprogress(DWORD cbTransferred)
 	b->fcompleted(cbTransferred);
 	if (b->is_completed() == true)//이번에 패킷을 다 보냈다면
 	{
+		sendbuf.pop_front();
+		delete b;
 		return true;
 	}
 	return false;
@@ -63,6 +65,7 @@ bool IPacket::sendprogress(DWORD cbTransferred)
 
 bool IPacket::tryrecv()
 {
+	if (recvbuf->getcompleted() > 0)return true;
 	return this->recv(recvbuf->getbuf(), recvbuf->getleft());
 }
 

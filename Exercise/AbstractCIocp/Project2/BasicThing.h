@@ -6,14 +6,12 @@
 #include<deque>
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#include <ctime>
 
 enum STATUS
 {
 	START = 1,
 	LOBBY,
 	LGSI,
-	DBM,
 	DISCONNECTED
 };
 
@@ -22,7 +20,8 @@ enum IO_TYPE
 {
 	recvIO = 1,
 	sendIO,
-	acceptIO
+	acceptIO,
+
 };
 
 class _BUFFER

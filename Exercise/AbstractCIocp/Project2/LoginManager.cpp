@@ -2,30 +2,37 @@
 
 LoginManager* LoginManager::instance = nullptr;
 
-LoginManager::LoginManager()
+LoginManager::LoginManager(): _BASICMANAGER(STATUS::LGSI)
 {
 	join_member.clear();
 	loggedin.clear();
-	err_msg.clear();
-	err_msg.insert(std::make_pair(MULTIPLEID, "아이디 중복"));
-	err_msg.insert(std::make_pair(LENGTHLIMIT, "길이 초과"));
-	err_msg.insert(std::make_pair(SMALLCHAR, "공백란 존재"));
-	err_msg.insert(std::make_pair(ALREADYLGIN, "이미 로그인됨"));
-	err_msg.insert(std::make_pair(NOMATCH, "잘못된 아이디 혹은 비번입니다."));
-	err_msg.insert(std::make_pair(UNKNOWNERR, "알 수 없는 오류"));
-	err_msg.insert(std::make_pair(NOERR, "에러 없음"));
+	_BASICMANAGER::addMsg(LOGIN_MSG, "로그인을 하시기위해 아이디와 비밀번호를 입력하세요.");
+	_BASICMANAGER::addMsg(SIGNIN_MSG, "회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.");
+	_BASICMANAGER::addMsg(MULTIPLEID, "아이디 중복입니다.");
+	_BASICMANAGER::addMsg(LENGTHLIMIT, "아이디와 비밀번호는 20자이내로 입력해주세요.");
+	_BASICMANAGER::addMsg(SMALLCHAR, "너무 짧습니다.");
+	_BASICMANAGER::addMsg(ALREADYLGIN, "이미 로그인되어 있습니다.");
+	_BASICMANAGER::addMsg(NOMATCH, "아이디 혹은 비밀번호 오류입니다.");
+	_BASICMANAGER::addMsg(UNKNOWNERR, "알 수 없는 오류입니다.");
+	_BASICMANAGER::addMsg(NOERR, "에러가 없습니다.");
+	_BASICMANAGER::addMsg(LOGIN_SUCCESS, "로그인에 성공하였습니다.");
+	_BASICMANAGER::addMsg(SIGNIN_SUCCESS, "회원가입에 성공하였습니다.");
+	LogManager::LogPrint("LoginManager Created");
+	getJoinm();
+	LogManager::LogPrint("JOINMEBER GET COMPLETED");
+
 }
 
 LoginManager::~LoginManager()
 {
 	join_member.clear();
 	loggedin.clear();
-	err_msg.clear();
+	LogManager::LogPrint("LoginManager Deleted");
 }
 
 void LoginManager::CreateInstance()
 {
-	instance = new LoginManager();
+	if(instance==nullptr)instance = new LoginManager();
 }
 
 LoginManager* LoginManager::GetInstance()
@@ -35,7 +42,21 @@ LoginManager* LoginManager::GetInstance()
 
 void LoginManager::ClearInstance()
 {
-	delete instance;
+	if (instance != nullptr)
+	{
+		delete instance;
+		instance = nullptr;
+	}
+}
+
+void LoginManager::getJoinm()
+{
+	int a = 0;
+	LoginInfo** tmp = DBManager::getinstance()->getJoinedMember(&a);
+	for (int i = 0; i < a; i++)
+	{
+		join_member.push_back(tmp[i]);
+	}
 }
 
 int LoginManager::trySignin(char* id, char* pw)
@@ -58,7 +79,7 @@ int LoginManager::trySignin(char* id, char* pw)
 
 	join_member.push_back(tmp);
 
-	return NOERR;
+	return tmp->uuid;
 }
 
 int LoginManager::tryLogin(char* id, char* pw)
@@ -79,7 +100,7 @@ int LoginManager::tryLogin(char* id, char* pw)
 				else
 				{
 					loggedin.push_back(tmp->uuid);
-					return NOERR;
+					return tmp->uuid;
 				}
 			}
 			break;
@@ -89,10 +110,7 @@ int LoginManager::tryLogin(char* id, char* pw)
 	return NOMATCH;
 }
 
-void LoginManager::geterrmsg(char* msg, int e)
-{
-	strcpy(msg, err_msg.find((LGIN_SGIN_ERR)e)->second.c_str());
-}
+
 
 int LoginManager::packPackit(char* Dest, int l, int p, int num, char* id, char* pw, char* msg, int e)
 {
@@ -255,4 +273,76 @@ void LoginManager::unpackPackit(char* Data, int* l, int* p, int* num, char* id, 
 		}
 	}
 
+}
+
+void LoginManager::insideProcess(int* managerNo, char* data, int* datasize)
+{
+	int l = 0, p = 0, num = 0, e = 0;
+	char id[20] = "", pw[20] = "", msg[500] = "";
+	unpackPackit(data, &l, &p, &num, id, pw, msg, &e);
+	LogManager::LogPrint("LoginManager Data\nLGSI - %d\nLGSIP - %d",l,p);
+	if (l == LGIN && p == LOGIN_TRY)
+	{
+		*managerNo = getNo();
+		e = tryLogin(id, pw);
+		if (e > 0)//uuid가 리턴됨
+		{
+			getMsg(msg, LOGIN_SUCCESS);
+			int k = packPackit(data, LGIN, LOGIN_SUCCESS, e, nullptr, nullptr, msg, NOERR);
+			*datasize = k;
+		}
+		else
+		{
+			getMsg(msg, e);
+			int k = packPackit(data, LGIN, LOGIN_ERROR, -1, nullptr, nullptr, msg, e);
+			*datasize = k;
+		}
+	}
+	else if (l == SIGNIN && p == SIGNIN_TRY)
+	{
+		*managerNo = getNo();
+		e = trySignin(id, pw);
+		if (e > 0)//uuid가 리턴됨
+		{
+			getMsg(msg, SIGNIN_SUCCESS);
+			int k = packPackit(data, SIGNIN, SIGNIN_SUCCESS, e, nullptr, nullptr, msg, NOERR);
+			*datasize = k;
+		}
+		else
+		{
+			getMsg(msg, e);
+			int k = packPackit(data, SIGNIN, SIGNIN_ERROR, -1, nullptr, nullptr, msg, e);
+			*datasize = k;
+		}
+	}
+}
+
+void LoginManager::outsideProcess(int* managerNo, char* data, int* datasize)
+{
+	if (*managerNo == LOBBY)
+	{
+		int sel = 0;
+		int s = 0;
+		memcpy(&sel, data, sizeof(int));
+		LogManager::LogPrint("LoginManager Data\nTransferred From  - %d\nLGSI - %d\n",*managerNo,sel );
+
+		if (sel == 1)
+		{
+			char msg[100]="";
+			getMsg(msg, LOGIN_MSG);
+			*managerNo = getNo();
+			s = packPackit(data, LGIN, LOGIN_MSG, -1, nullptr, nullptr, msg, NOERR);
+			*datasize = s;
+		}
+		else if (sel == 2)
+		{
+			*managerNo = getNo();
+			char msg[100] = "";
+			getMsg(msg, SIGNIN_MSG);
+			*managerNo = getNo();
+			s = packPackit(data, SIGNIN, SIGNIN_MSG, -1, nullptr, nullptr, msg, NOERR);
+			*datasize = s;
+		}
+	}
+	
 }

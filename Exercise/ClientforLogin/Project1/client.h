@@ -9,7 +9,7 @@
 #define SERVERIP   "127.0.0.1"//루프백 주소
 #define SERVERPORT 9000//서버 포트 지정
 #define BUFSIZE    1024//버퍼 사이즈
-#define loggable 0
+#define loggable 1
 
 enum STATUS
 {
@@ -42,7 +42,7 @@ enum SIGNIN_PROTOCOL
 
 enum LGIN_SGIN_ERR
 {
-	MULTIPLEID = 472,// 회원가입 아이디중복
+	MULTIPLEID = -472,// 회원가입 아이디중복
 	LENGTHLIMIT,// 최대 길이 초과
 	SMALLCHAR,//공백란 있음
 	ALREADYLGIN,//이미 로그인 됨

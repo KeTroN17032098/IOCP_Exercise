@@ -30,27 +30,27 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -143,24 +143,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BasicManager.h" />
     <ClInclude Include="BasicThing.h" />
     <ClInclude Include="DBManager.h" />
     <ClInclude Include="IPacket.h" />
     <ClInclude Include="ISession.h" />
     <ClInclude Include="ISessionManager.h" />
     <ClInclude Include="ISocket.h" />
+    <ClInclude Include="LobbyManager.h" />
     <ClInclude Include="LoginManager.h" />
+    <ClInclude Include="LogManager.h" />
+    <ClInclude Include="MainManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.cpp" />
     <ClCompile Include="AbstractIOCP.h" />
+    <ClCompile Include="BasicManager.cpp" />
     <ClCompile Include="BasicThing.cpp" />
     <ClCompile Include="DBManager.cpp" />
     <ClCompile Include="IPacket.cpp" />
     <ClCompile Include="ISessionManager.cpp" />
     <ClCompile Include="ISocket.cpp" />
+    <ClCompile Include="LobbyManager.cpp" />
     <ClCompile Include="LoginManager.cpp" />
+    <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

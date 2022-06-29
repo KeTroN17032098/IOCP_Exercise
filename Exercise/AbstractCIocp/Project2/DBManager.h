@@ -1,6 +1,6 @@
 #pragma once
 #pragma comment(lib,"libmysql.lib")
-#include"basicthing.h"
+#include"LogManager.h"
 #include<string>
 #include<iostream>
 #include<mysql.h>
@@ -14,6 +14,9 @@ private:
 	MYSQL_RES* sql_result;
 	MYSQL_ROW sql_row;
 
+	std::string dbConnectInfo[4];
+	int portno;
+
 	DBManager(char* ip,char* user,char* pw,char* db,int port);
 	~DBManager();
 public:
@@ -23,12 +26,18 @@ public:
 	}
 	static void CreateInstance(char* ip, char* user, char* pw, char* db,int port)
 	{
-		instance = new DBManager(ip, user, pw, db,port);
+		if (instance == nullptr)instance = new DBManager(ip, user, pw, db,port);
 	}
-	void clearInstance()
+	static void clearInstance()
 	{
-		delete instance;
+		if (instance != nullptr)
+		{
+			delete instance;
+			instance = nullptr;
+			LogManager::LogPrint("DBManger Deleted");
+
+		}
 	}
-	LoginInfo* getJoinedMember(int* count);
+	LoginInfo** getJoinedMember(int* count);
 	int getNewUUID(char* id, char* pw);
 };

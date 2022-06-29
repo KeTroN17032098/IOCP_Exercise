@@ -221,8 +221,8 @@ int packPackitLOBBY(char* Dst, LOBBY_PROTOCOL p, int sel, char* msg)
 {
 	int size = 0;
 	size += addDataatEndwithoutSize(Dst + size, &p, sizeof(LOBBY_PROTOCOL));
-	size += addDataatEndwithoutSize(Dst + size, &sel, sizeof(int));
-	size += addDataatEnd(Dst + size, msg, strlen(msg));
+	if (p == SLECTION)size += addDataatEndwithoutSize(Dst + size, &sel, sizeof(int));
+	if (p == WELCOMEMSG)size += addDataatEnd(Dst + size, msg, strlen(msg));
 	return size;
 }
 
@@ -231,8 +231,8 @@ void unpackpackitLOBBY(char* data, LOBBY_PROTOCOL* p, int* sel, char* msg)
 	int tmp=0;
 	int size = 0;
 	size += getOnlyData(data+size, p, sizeof(LOBBY_PROTOCOL));
-	size += getOnlyData(data+size, sel, sizeof(int));
-	size += getDatawithSize(data+size, msg, &tmp);
+	if(*p==SLECTION)size += getOnlyData(data+size, sel, sizeof(int));
+	if(*p==WELCOMEMSG)size += getDatawithSize(data+size, msg, &tmp);
 }
 // 사용자 정의 데이터 수신 함수
 int recvn(SOCKET s, char* buf, int len, int flags)//input 변수가 대부분이나 buf 경우 포인터를 제공해 data를 받아옴
@@ -282,14 +282,20 @@ void PackitCheck(char* packit, int size)
 		pt += sizeof(int);
 		std::cout << "로비 패킷\n로비 프로토콜 : " << d << std::endl;
 		char msg[500]="";
-		memcpy(&f, packit + pt, sizeof(int));
-		pt += sizeof(int);
-		std::cout << "선택 : " << f << std::endl;
-		memcpy(&e, packit + pt, sizeof(int));
-		pt += sizeof(int);
-		memcpy(msg, packit + pt, e);
-		pt += e;
-		std::cout << "메시지 크기 : " << e << "\n메시지 내용 :" << msg << std::endl;
+		if (d == SLECTION) 
+		{
+			memcpy(&f, packit + pt, sizeof(int));
+			pt += sizeof(int);
+			std::cout << "선택 : " << f << std::endl;
+		}
+		if (d == WELCOMEMSG) 
+		{
+			memcpy(&e, packit + pt, sizeof(int));
+			pt += sizeof(int);
+			memcpy(msg, packit + pt, e);
+			pt += e;
+			std::cout << "메시지 크기 : " << e << "\n메시지 내용 :" << msg << std::endl;
+		}
 
 
 
@@ -392,7 +398,7 @@ void logPrint(bool logable, int data)
 int main()
 {
 	int retval;//리턴 값을 저장할 변수
-	bool logable = false;
+	bool logable = true;
 
 
 	// 윈속 초기화,dll 을 메모리에 올리기 위해 호출
@@ -437,16 +443,21 @@ int main()
 	// 서버와 데이터 통신
 	while (1) 
 	{//특수 상황 제외 계속 돌아감
+		ZeroMemory(buf, sizeof(buf));
+		len = 0;
+		logPrint(logable, "RECV1");
 		retval = recv(sock, buf,sizeof(int), 0);
 		if (retval == SOCKET_ERROR)
 		{
-			err_quit("recv");
+			err_quit("recv1");
 		}
 		memcpy(&len, buf, sizeof(int));
+		logPrint(logable, len);
+
 		retval = recv(sock, buf + sizeof(int), len, 0);
 		if (retval == SOCKET_ERROR)
 		{
-			err_quit("recv");
+			err_quit("recv2");
 		}
 		PackitCheck(buf, len);
 		ZeroMemory(data, sizeof(data));
@@ -523,8 +534,9 @@ int main()
 		retval = send(sock, buf, len, 0);
 		if (retval == SOCKET_ERROR)
 		{
-			err_quit("send");
+			err_quit("send cycle");
 		}
+		logPrint(logable, "Send CycleCompleted");
 	}
 
 	// closesocket()

@@ -22,6 +22,16 @@
     <ClInclude Include="LoginManager.h">
       <Filter>VariousManagers</Filter>
     </ClInclude>
+    <ClInclude Include="BasicManager.h">
+      <Filter>AbstractThings</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyManager.h">
+      <Filter>VariousManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="LogManager.h">
+      <Filter>VariousManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.h">
@@ -49,6 +59,16 @@
     <ClCompile Include="LoginManager.cpp">
       <Filter>VariousManagers</Filter>
     </ClCompile>
+    <ClCompile Include="BasicManager.cpp">
+      <Filter>AbstractThings</Filter>
+    </ClCompile>
+    <ClCompile Include="LobbyManager.cpp">
+      <Filter>VariousManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="LogManager.cpp">
+      <Filter>VariousManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="MainManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="AbstractThings">
