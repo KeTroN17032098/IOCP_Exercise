@@ -21,7 +21,7 @@ enum STATUS
 enum LORS
 {
 	LGIN = 76,
-	SIGNIN
+	SIGNIN,
 };
 
 enum LOGIN_PROTOCOL

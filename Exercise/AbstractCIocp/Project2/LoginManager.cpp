@@ -110,6 +110,19 @@ int LoginManager::tryLogin(char* id, char* pw)
 	return NOMATCH;
 }
 
+void LoginManager::LogOut(int uuid)
+{
+	std::deque<int>::iterator iter;
+	for (iter = loggedin.begin(); iter != loggedin.end(); iter++)
+	{
+		if ((*iter) == uuid)
+		{
+			break;
+		}
+	}
+	if (iter != loggedin.end())loggedin.erase(iter);
+}
+
 
 
 int LoginManager::packPackit(char* Dest, int l, int p, int num, char* id, char* pw, char* msg, int e)
@@ -275,7 +288,7 @@ void LoginManager::unpackPackit(char* Data, int* l, int* p, int* num, char* id, 
 
 }
 
-void LoginManager::insideProcess(int* managerNo, char* data, int* datasize)
+void LoginManager::insideProcess(ISession* is, int* managerNo, char* data, int* datasize)
 {
 	int l = 0, p = 0, num = 0, e = 0;
 	char id[20] = "", pw[20] = "", msg[500] = "";
@@ -287,6 +300,7 @@ void LoginManager::insideProcess(int* managerNo, char* data, int* datasize)
 		e = tryLogin(id, pw);
 		if (e > 0)//uuid°¡ ¸®ÅÏµÊ
 		{
+			is->setUUID(e);
 			getMsg(msg, LOGIN_SUCCESS);
 			int k = packPackit(data, LGIN, LOGIN_SUCCESS, e, nullptr, nullptr, msg, NOERR);
 			*datasize = k;
@@ -304,6 +318,7 @@ void LoginManager::insideProcess(int* managerNo, char* data, int* datasize)
 		e = trySignin(id, pw);
 		if (e > 0)//uuid°¡ ¸®ÅÏµÊ
 		{
+			is->setUUID(e);
 			getMsg(msg, SIGNIN_SUCCESS);
 			int k = packPackit(data, SIGNIN, SIGNIN_SUCCESS, e, nullptr, nullptr, msg, NOERR);
 			*datasize = k;
@@ -315,9 +330,10 @@ void LoginManager::insideProcess(int* managerNo, char* data, int* datasize)
 			*datasize = k;
 		}
 	}
+
 }
 
-void LoginManager::outsideProcess(int* managerNo, char* data, int* datasize)
+void LoginManager::outsideProcess(ISession* is, int* managerNo, char* data, int* datasize)
 {
 	if (*managerNo == LOBBY)
 	{

@@ -64,7 +64,7 @@ int getDatawithSize(char* from, void* dst, int* size)
 	int tmp = 0;
 	memcpy(size, from+tmp, sizeof(int));
 	tmp += sizeof(int);
-	memcpy(dst, from + tmp, *size);
+	memcpy(dst, from + tmp, *size+4);
 	tmp += *size;
 	return tmp;
 }
@@ -228,11 +228,22 @@ int packPackitLOBBY(char* Dst, LOBBY_PROTOCOL p, int sel, char* msg)
 
 void unpackpackitLOBBY(char* data, LOBBY_PROTOCOL* p, int* sel, char* msg)
 {
-	int tmp=0;
 	int size = 0;
-	size += getOnlyData(data+size, p, sizeof(LOBBY_PROTOCOL));
-	if(*p==SLECTION)size += getOnlyData(data+size, sel, sizeof(int));
-	if(*p==WELCOMEMSG)size += getDatawithSize(data+size, msg, &tmp);
+	memcpy(p, data + size, sizeof(int));
+	size += sizeof(int);
+	if (*p == SLECTION)
+	{
+		memcpy(sel, data + size, sizeof(int));
+		size += sizeof(int);
+	}
+	if (*p == WELCOMEMSG)
+	{
+		int msgsize = 0;
+		memcpy(&msgsize, data + size, sizeof(int));
+		size += sizeof(int);
+		memcpy(msg, data + size, msgsize);
+		size += msgsize;
+	}
 }
 // 사용자 정의 데이터 수신 함수
 int recvn(SOCKET s, char* buf, int len, int flags)//input 변수가 대부분이나 buf 경우 포인터를 제공해 data를 받아옴
@@ -292,7 +303,7 @@ void PackitCheck(char* packit, int size)
 		{
 			memcpy(&e, packit + pt, sizeof(int));
 			pt += sizeof(int);
-			memcpy(msg, packit + pt, e);
+			memcpy(msg, packit + 20, a-20);
 			pt += e;
 			std::cout << "메시지 크기 : " << e << "\n메시지 내용 :" << msg << std::endl;
 		}
@@ -452,16 +463,18 @@ int main()
 			err_quit("recv1");
 		}
 		memcpy(&len, buf, sizeof(int));
-		logPrint(logable, len);
+		logPrint(logable, retval);
 
 		retval = recv(sock, buf + sizeof(int), len, 0);
 		if (retval == SOCKET_ERROR)
 		{
 			err_quit("recv2");
 		}
+		logPrint(logable, retval);
+
 		PackitCheck(buf, len);
 		ZeroMemory(data, sizeof(data));
-		unpackPackitB(buf, retval, &mystat, &pno, &psize, data);
+		unpackPackitB(buf, len, &mystat, &pno, &psize, data);
 		char msg[500] = "";
 		ZeroMemory(msg, sizeof(msg));
 		logPrint(logable, "UNPACKED BASIC");

@@ -11,18 +11,6 @@ DBManager::DBManager(char* ip, char* user, char* pw, char* db,int port)
 	dbConnectInfo[3] = db;
 	portno = port;
 
-}
-
-DBManager::~DBManager()
-{
-	dbConnectInfo[0].clear();
-	dbConnectInfo[1].clear();
-	dbConnectInfo[2].clear();
-	dbConnectInfo[3].clear();
-}
-
-LoginInfo** DBManager::getJoinedMember(int* count)
-{
 	mysql_init(&mysql);
 
 	if (!mysql_real_connect(&mysql,
@@ -42,6 +30,21 @@ LoginInfo** DBManager::getJoinedMember(int* count)
 		std::cout << "MYSQL QUERY ERROR : " << mysql_error(&mysql) << std::endl;
 		exit(-1);
 	}
+
+
+}
+
+DBManager::~DBManager()
+{
+	dbConnectInfo[0].clear();
+	dbConnectInfo[1].clear();
+	dbConnectInfo[2].clear();
+	dbConnectInfo[3].clear();
+	mysql_close(&mysql);
+}
+
+LoginInfo** DBManager::getJoinedMember(int* count)
+{
 	if (mysql_query(&mysql, "call joined_member();"))
 	{
 		std::cout << "MYSQL QUERY ERROR : " << mysql_error(&mysql) << std::endl;
@@ -66,33 +69,19 @@ LoginInfo** DBManager::getJoinedMember(int* count)
 		c++;
 		LogManager::LogPrint("ACCOUNT #%d : %s|%s|%d", c, tmp[c-1]->ID, tmp[c-1]->PW, tmp[c-1]->uuid);
 	}
+
+	while (mysql_more_results(&mysql))
+		mysql_next_result(&mysql);
+
 	mysql_free_result(sql_result);
 	*count = k;
-	//mysql_close(&mysql);
+
 	return tmp;
 }
 
 int DBManager::getNewUUID(char* id, char* pw)
 {
-	//mysql_init(&mysql);
 
-	/*if (!mysql_real_connect(&mysql,
-		dbConnectInfo[0].c_str(),
-		dbConnectInfo[1].c_str(),
-		dbConnectInfo[2].c_str(),
-		dbConnectInfo[3].c_str(),
-		portno,
-		NULL, 0))
-	{
-		std::cout << "MYSQL CONNECT ERROR : " << mysql_error(&mysql) << std::endl;
-		exit(-1);
-	}*/
-
-	/*if (mysql_query(&mysql, "set names 'euckr';"))
-	{
-		std::cout << "MYSQL QUERY ERROR : " << mysql_error(&mysql) << std::endl;
-		exit(-1);
-	}*/
 	int result = -1;
 	char* stop;
 	std::string quey = "call add_member('";
@@ -102,14 +91,7 @@ int DBManager::getNewUUID(char* id, char* pw)
 	quey.append("');");
 	LogManager::LogPrint("QUERY SENDED : %s",quey.c_str());
 
-	if (mysql_query(&mysql, "insert into simpleaccount.accounts values(NULL,'toy','1234');"))
-	{
-		std::cout << "MYSQL QUERY ERROR : " << mysql_error(&mysql) << std::endl;
-		exit(-1);
-	}
-	mysql_free_result(sql_result);
-
-	if (mysql_query(&mysql, "select uuid from simpleaccount.accounts where id='toy'"))
+	if (mysql_query(&mysql, quey.c_str()))
 	{
 		std::cout << "MYSQL QUERY ERROR : " << mysql_error(&mysql) << std::endl;
 		exit(-1);
@@ -119,8 +101,8 @@ int DBManager::getNewUUID(char* id, char* pw)
 	{
 		result = (int)std::strtoll(sql_row[0], &stop, 10);
 	}
+	while (mysql_more_results(&mysql))mysql_next_result(&mysql);
 	mysql_free_result(sql_result);
-	//mysql_close(&mysql);
 	return result;
 }
 

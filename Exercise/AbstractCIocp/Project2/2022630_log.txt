@@ -1,0 +1,1268 @@
+2022630/11:32:3 - LOG MANAGER STARTED
+2022630/11:32:3 - DBManager Created
+2022630/11:32:3 - BasicManager Created
+2022630/11:32:3 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/11:32:3 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/11:32:3 - Added -472 - 아이디 중복입니다.
+2022630/11:32:3 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/11:32:3 - Added -470 - 너무 짧습니다.
+2022630/11:32:3 - Added -469 - 이미 로그인되어 있습니다.
+2022630/11:32:3 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/11:32:3 - Added -467 - 알 수 없는 오류입니다.
+2022630/11:32:3 - Added -466 - 에러가 없습니다.
+2022630/11:32:3 - Added 5007 - 로그인에 성공하였습니다.
+2022630/11:32:3 - Added 438 - 회원가입에 성공하였습니다.
+2022630/11:32:3 - LoginManager Created
+2022630/11:32:3 - QUERY SENDED : call joined_member();
+2022630/11:32:3 - ACCOUNT #1 : kasd|546g|1
+2022630/11:32:3 - ACCOUNT #2 : jut|das3|2
+2022630/11:32:3 - ACCOUNT #3 : mant|457|3
+2022630/11:32:3 - ACCOUNT #4 : mon|346|4
+2022630/11:32:3 - ACCOUNT #5 : lovemy|3468|5
+2022630/11:32:3 - ACCOUNT #6 : kotra||6
+2022630/11:32:3 - ACCOUNT #7 : manf|5ygf|7
+2022630/11:32:3 - ACCOUNT #8 : fdhaj|45r|8
+2022630/11:32:3 - JOINMEBER GET COMPLETED
+2022630/11:32:3 - BasicManager Created
+2022630/11:32:3 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/11:32:3 - IOCP STARTED
+2022630/11:32:3 - Thread No.1 Created
+2022630/11:32:3 - Thread No.2 Created
+2022630/11:32:3 - Thread No.3 Created
+2022630/11:32:3 - Thread No.4 Created
+2022630/11:32:3 - Thread No.5 Created
+2022630/11:32:3 - Thread No.6 Created
+2022630/11:32:3 - Thread No.7 Created
+2022630/11:32:3 - Thread No.8 Created
+2022630/11:32:3 - Listen Started
+2022630/11:32:8 - Socket Accepted : 127.0.0.1:55676
+2022630/11:32:8 - 3
+2022630/11:32:8 - 1404 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/11:32:8 - Connected Socket with IOCP
+2022630/11:32:8 - Made Session by Socket
+2022630/11:32:8 - 18160 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:32:8 - 18160 - Recv Process
+2022630/11:32:8 - PackitProc Started
+2022630/11:32:8 - Transfer to Manager : 1
+2022630/11:32:8 - LOBBYManager Data
+Transferred From  - 1
+2022630/11:32:8 - Last Manager : 2
+2022630/11:32:8 - 18160 - Recv Process Completed
+2022630/11:32:8 - 1404 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/11:32:8 - 1404 - Send Process
+2022630/11:32:8 - 1404 - Send Process Completed
+2022630/11:32:11 - 1404 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:32:11 - 1404 - Recv Process
+2022630/11:32:11 - PackitProc Started
+2022630/11:32:11 - Transfer to Manager : 2
+2022630/11:32:11 - LOBBYManager Data
+LBProtocol  - 146
+2022630/11:32:11 - Process move to LoginManager
+2022630/11:32:11 - LoginManager Data
+Transferred From  - 2
+LGSI - 2
+
+2022630/11:32:11 - JTC : 77
+2022630/11:32:11 - Last Manager : 3
+2022630/11:32:11 - 1404 - Recv Process Completed
+2022630/11:32:11 - 18160 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/11:32:11 - 18160 - Send Process
+2022630/11:32:11 - 18160 - Send Process Completed
+2022630/11:32:14 - 18160 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:32:14 - 18160 - Recv Process
+2022630/11:32:14 - PackitProc Started
+2022630/11:32:14 - Transfer to Manager : 3
+2022630/11:32:14 - LoginManager Data
+LGSI - 77
+LGSIP - 437
+2022630/11:32:14 - QUERY SENDED : call add_member('loka','346');
+2022630/11:44:16 - LOG MANAGER STARTED
+2022630/11:44:16 - DBManager Created
+2022630/11:44:16 - BasicManager Created
+2022630/11:44:16 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/11:44:16 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/11:44:16 - Added -472 - 아이디 중복입니다.
+2022630/11:44:16 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/11:44:16 - Added -470 - 너무 짧습니다.
+2022630/11:44:16 - Added -469 - 이미 로그인되어 있습니다.
+2022630/11:44:16 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/11:44:16 - Added -467 - 알 수 없는 오류입니다.
+2022630/11:44:16 - Added -466 - 에러가 없습니다.
+2022630/11:44:16 - Added 5007 - 로그인에 성공하였습니다.
+2022630/11:44:16 - Added 438 - 회원가입에 성공하였습니다.
+2022630/11:44:16 - LoginManager Created
+2022630/11:44:16 - QUERY SENDED : call joined_member();
+2022630/11:44:16 - ACCOUNT #1 : kasd|546g|1
+2022630/11:44:16 - ACCOUNT #2 : jut|das3|2
+2022630/11:44:16 - ACCOUNT #3 : mant|457|3
+2022630/11:44:16 - ACCOUNT #4 : mon|346|4
+2022630/11:44:16 - ACCOUNT #5 : lovemy|3468|5
+2022630/11:44:16 - ACCOUNT #6 : kotra||6
+2022630/11:44:16 - ACCOUNT #7 : manf|5ygf|7
+2022630/11:44:16 - ACCOUNT #8 : fdhaj|45r|8
+2022630/11:44:16 - JOINMEBER GET COMPLETED
+2022630/11:44:16 - BasicManager Created
+2022630/11:44:16 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/11:44:16 - IOCP STARTED
+2022630/11:44:16 - Thread No.1 Created
+2022630/11:44:16 - Thread No.2 Created
+2022630/11:44:16 - Thread No.3 Created
+2022630/11:44:16 - Thread No.4 Created
+2022630/11:44:16 - Thread No.5 Created
+2022630/11:44:16 - Thread No.6 Created
+2022630/11:44:16 - Thread No.7 Created
+2022630/11:44:16 - Thread No.8 Created
+2022630/11:44:16 - Listen Started
+2022630/11:44:23 - Socket Accepted : 127.0.0.1:50210
+2022630/11:44:23 - 3
+2022630/11:44:23 - 4956 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/11:44:23 - Connected Socket with IOCP
+2022630/11:44:23 - Made Session by Socket
+2022630/11:44:23 - 4956 - Accept
+2022630/11:44:23 - 13044 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:44:23 - 13044 - Recv Process
+2022630/11:44:23 - PackitProc Started
+2022630/11:44:23 - Transfer to Manager : 1
+2022630/11:44:23 - LOBBYManager Data
+Transferred From  - 1
+2022630/11:44:23 - Last Manager : 2
+2022630/11:44:23 - 4956 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/11:44:23 - 4956 - Send Process
+2022630/11:44:23 - 13044 - Recv Process Completed
+2022630/11:44:23 - 4956 - Send Process Completed
+2022630/11:44:24 - 4956 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:44:24 - 4956 - Recv Process
+2022630/11:44:24 - PackitProc Started
+2022630/11:44:24 - Transfer to Manager : 2
+2022630/11:44:24 - LOBBYManager Data
+LBProtocol  - 146
+2022630/11:44:24 - Process move to LoginManager
+2022630/11:44:24 - LoginManager Data
+Transferred From  - 2
+LGSI - 2
+
+2022630/11:44:24 - JTC : 77
+2022630/11:44:24 - Last Manager : 3
+2022630/11:44:24 - 4956 - Recv Process Completed
+2022630/11:44:24 - 13044 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/11:44:24 - 13044 - Send Process
+2022630/11:44:24 - 13044 - Send Process Completed
+2022630/11:44:26 - 13044 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:44:26 - 13044 - Recv Process
+2022630/11:44:26 - PackitProc Started
+2022630/11:44:26 - Transfer to Manager : 3
+2022630/11:44:26 - LoginManager Data
+LGSI - 77
+LGSIP - 437
+2022630/11:44:26 - QUERY SENDED : call add_member('fdsg','78gf');
+2022630/11:49:54 - LOG MANAGER STARTED
+2022630/11:49:54 - DBManager Created
+2022630/11:49:54 - BasicManager Created
+2022630/11:49:54 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/11:49:54 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/11:49:54 - Added -472 - 아이디 중복입니다.
+2022630/11:49:54 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/11:49:54 - Added -470 - 너무 짧습니다.
+2022630/11:49:54 - Added -469 - 이미 로그인되어 있습니다.
+2022630/11:49:54 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/11:49:54 - Added -467 - 알 수 없는 오류입니다.
+2022630/11:49:54 - Added -466 - 에러가 없습니다.
+2022630/11:49:54 - Added 5007 - 로그인에 성공하였습니다.
+2022630/11:49:54 - Added 438 - 회원가입에 성공하였습니다.
+2022630/11:49:54 - LoginManager Created
+2022630/11:49:54 - QUERY SENDED : call joined_member();
+2022630/11:49:54 - ACCOUNT #1 : kasd|546g|1
+2022630/11:49:54 - ACCOUNT #2 : jut|das3|2
+2022630/11:49:54 - ACCOUNT #3 : mant|457|3
+2022630/11:49:54 - ACCOUNT #4 : mon|346|4
+2022630/11:49:54 - ACCOUNT #5 : lovemy|3468|5
+2022630/11:49:54 - ACCOUNT #6 : kotra||6
+2022630/11:49:54 - ACCOUNT #7 : manf|5ygf|7
+2022630/11:49:54 - ACCOUNT #8 : fdhaj|45r|8
+2022630/11:49:54 - ACCOUNT #9 : fdsg|78gf|9
+2022630/11:49:54 - JOINMEBER GET COMPLETED
+2022630/11:49:54 - BasicManager Created
+2022630/11:49:54 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/11:49:54 - IOCP STARTED
+2022630/11:49:54 - Thread No.1 Created
+2022630/11:49:54 - Thread No.2 Created
+2022630/11:49:54 - Thread No.3 Created
+2022630/11:49:54 - Thread No.4 Created
+2022630/11:49:54 - Thread No.5 Created
+2022630/11:49:54 - Thread No.6 Created
+2022630/11:49:54 - Thread No.7 Created
+2022630/11:49:54 - Thread No.8 Created
+2022630/11:49:54 - Listen Started
+2022630/11:50:1 - Socket Accepted : 127.0.0.1:50237
+2022630/11:50:1 - 3
+2022630/11:50:1 - 8420 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/11:50:1 - Connected Socket with IOCP
+2022630/11:50:1 - Made Session by Socket
+2022630/11:50:1 - 8420 - Accept
+2022630/11:50:1 - 5480 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:50:1 - 5480 - Recv Process
+2022630/11:50:1 - PackitProc Started
+2022630/11:50:1 - Transfer to Manager : 1
+2022630/11:50:1 - LOBBYManager Data
+Transferred From  - 1
+2022630/11:50:1 - Last Manager : 2
+2022630/11:50:1 - 5480 - Recv Process Completed
+2022630/11:50:1 - 8420 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/11:50:1 - 8420 - Send Process
+2022630/11:50:1 - 8420 - Send Process Completed
+2022630/11:50:2 - 8420 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:50:2 - 8420 - Recv Process
+2022630/11:50:2 - PackitProc Started
+2022630/11:50:2 - Transfer to Manager : 2
+2022630/11:50:2 - LOBBYManager Data
+LBProtocol  - 146
+2022630/11:50:2 - Process move to LoginManager
+2022630/11:50:2 - LoginManager Data
+Transferred From  - 2
+LGSI - 2
+
+2022630/11:50:2 - JTC : 77
+2022630/11:50:2 - Last Manager : 3
+2022630/11:50:2 - 8420 - Recv Process Completed
+2022630/11:50:2 - 5480 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/11:50:2 - 5480 - Send Process
+2022630/11:50:2 - 5480 - Send Process Completed
+2022630/11:50:4 - 5480 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:50:4 - 5480 - Recv Process
+2022630/11:50:4 - PackitProc Started
+2022630/11:50:4 - Transfer to Manager : 3
+2022630/11:50:4 - LoginManager Data
+LGSI - 77
+LGSIP - 437
+2022630/11:50:4 - QUERY SENDED : call add_member('fdst','7yhgf');
+2022630/11:58:31 - LOG MANAGER STARTED
+2022630/11:58:31 - DBManager Created
+2022630/11:58:31 - BasicManager Created
+2022630/11:58:31 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/11:58:31 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/11:58:31 - Added -472 - 아이디 중복입니다.
+2022630/11:58:31 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/11:58:31 - Added -470 - 너무 짧습니다.
+2022630/11:58:31 - Added -469 - 이미 로그인되어 있습니다.
+2022630/11:58:31 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/11:58:31 - Added -467 - 알 수 없는 오류입니다.
+2022630/11:58:31 - Added -466 - 에러가 없습니다.
+2022630/11:58:31 - Added 5007 - 로그인에 성공하였습니다.
+2022630/11:58:31 - Added 438 - 회원가입에 성공하였습니다.
+2022630/11:58:31 - LoginManager Created
+2022630/11:58:31 - QUERY SENDED : call joined_member();
+2022630/11:58:31 - JOINMEBER GET COMPLETED
+2022630/11:58:31 - BasicManager Created
+2022630/11:58:31 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/11:58:31 - IOCP STARTED
+2022630/11:58:31 - Thread No.1 Created
+2022630/11:58:31 - Thread No.2 Created
+2022630/11:58:31 - Thread No.3 Created
+2022630/11:58:31 - Thread No.4 Created
+2022630/11:58:31 - Thread No.5 Created
+2022630/11:58:31 - Thread No.6 Created
+2022630/11:58:31 - Thread No.7 Created
+2022630/11:58:31 - Thread No.8 Created
+2022630/11:58:31 - Listen Started
+2022630/11:58:33 - Socket Accepted : 127.0.0.1:50265
+2022630/11:58:33 - 3
+2022630/11:58:33 - 13184 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/11:58:33 - Connected Socket with IOCP
+2022630/11:58:33 - Made Session by Socket
+2022630/11:58:33 - 13184 - Accept
+CompletionStatus / IO_TYPE : 1
+2022630/11:58:33 - 7376 - Recv Process
+2022630/11:58:33 - PackitProc Started
+2022630/11:58:33 - Transfer to Manager : 1
+2022630/11:58:33 - LOBBYManager Data
+Transferred From  - 1
+2022630/11:58:33 - Last Manager : 2
+2022630/11:58:33 - 7376 - Recv Process Completed
+2022630/11:58:33 - 13184 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/11:58:33 - 13184 - Send Process
+2022630/11:58:33 - 13184 - Send Process Completed
+2022630/11:58:34 - 13184 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:58:34 - 13184 - Recv Process
+2022630/11:58:34 - PackitProc Started
+2022630/11:58:34 - Transfer to Manager : 2
+2022630/11:58:34 - LOBBYManager Data
+LBProtocol  - 146
+2022630/11:58:34 - Process move to LoginManager
+2022630/11:58:34 - LoginManager Data
+Transferred From  - 2
+LGSI - 2
+
+2022630/11:58:34 - JTC : 77
+2022630/11:58:34 - Last Manager : 3
+2022630/11:58:34 - 13184 - Recv Process Completed
+2022630/11:58:34 - 7376 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/11:58:34 - 7376 - Send Process
+2022630/11:58:34 - 7376 - Send Process Completed
+2022630/11:58:38 - 7376 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/11:58:38 - 7376 - Recv Process
+2022630/11:58:38 - PackitProc Started
+2022630/11:58:38 - Transfer to Manager : 3
+2022630/11:58:38 - LoginManager Data
+LGSI - 77
+LGSIP - 437
+2022630/11:58:38 - QUERY SENDED : call add_member('kotra','325');
+2022630/12:17:58 - LOG MANAGER STARTED
+2022630/12:17:58 - DBManager Created
+2022630/12:17:58 - BasicManager Created
+2022630/12:17:58 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:17:58 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:17:58 - Added -472 - 아이디 중복입니다.
+2022630/12:17:58 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:17:58 - Added -470 - 너무 짧습니다.
+2022630/12:17:58 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:17:58 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:17:58 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:17:58 - Added -466 - 에러가 없습니다.
+2022630/12:17:58 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:17:58 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:17:58 - LoginManager Created
+2022630/12:17:58 - QUERY SENDED : call joined_member();
+2022630/12:17:58 - ACCOUNT #1 : kotra|245|1
+2022630/12:17:58 - JOINMEBER GET COMPLETED
+2022630/12:17:58 - BasicManager Created
+2022630/12:17:58 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:17:58 - IOCP STARTED
+2022630/12:17:58 - Thread No.1 Created
+2022630/12:17:58 - Thread No.2 Created
+2022630/12:17:58 - Thread No.3 Created
+2022630/12:17:58 - Thread No.4 Created
+2022630/12:17:58 - Thread No.5 Created
+2022630/12:17:58 - Thread No.6 Created
+2022630/12:17:58 - Thread No.7 Created
+2022630/12:17:58 - Thread No.8 Created
+2022630/12:17:58 - Listen Started
+2022630/12:18:0 - Socket Accepted : 127.0.0.1:50449
+2022630/12:18:0 - 3
+2022630/12:18:0 - 5300 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:18:0 - Connected Socket with IOCP
+2022630/12:18:0 - Made Session by Socket
+2022630/12:18:0 - 5300 - Accept
+2022630/12:18:0 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:18:0 - 12604 - Recv Process
+2022630/12:18:0 - PackitProc Started
+2022630/12:18:0 - Transfer to Manager : 1
+2022630/12:18:0 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:18:0 - Last Manager : 2
+2022630/12:18:0 - 12604 - Recv Process Completed
+ / IO_TYPE : 2
+2022630/12:18:0 - 5300 - Send Process
+2022630/12:18:0 - 5300 - Send Process Completed
+2022630/12:18:1 - 5300 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:18:1 - 5300 - Recv Process
+2022630/12:18:1 - PackitProc Started
+2022630/12:18:1 - Transfer to Manager : 2
+2022630/12:18:1 - LOBBYManager Data
+LBProtocol  - 146
+2022630/12:18:1 - Process move to LoginManager
+2022630/12:18:1 - LoginManager Data
+Transferred From  - 2
+LGSI - 2
+
+2022630/12:18:1 - JTC : 77
+2022630/12:18:1 - Last Manager : 3
+2022630/12:18:1 - 5300 - Recv Process Completed
+2022630/12:18:1 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:18:1 - 12604 - Send Process
+2022630/12:18:1 - 12604 - Send Process Completed
+2022630/12:18:4 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:18:4 - 12604 - Recv Process
+2022630/12:18:4 - PackitProc Started
+2022630/12:18:4 - Transfer to Manager : 3
+2022630/12:18:4 - LoginManager Data
+LGSI - 77
+LGSIP - 437
+2022630/12:18:4 - QUERY SENDED : call add_member('rttg','7ujyhg');
+2022630/12:18:4 - Last Manager : 3
+2022630/12:18:4 - 12604 - Recv Process Completed
+2022630/12:18:4 - 5300 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:18:4 - 5300 - Send Process
+2022630/12:18:4 - 5300 - Send Process Completed
+2022630/12:18:4 - 5300 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:18:4 - 5300 - Recv Process
+2022630/12:18:4 - PackitProc Started
+2022630/12:18:4 - Transfer to Manager : 4
+2022630/12:18:4 - REQUEST : DISCONNECTED
+2022630/12:18:4 - Last Manager : 4
+2022630/12:18:4 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:18:4 - 12604 - Disconnect
+2022630/12:20:37 - Socket Accepted : 127.0.0.1:50459
+2022630/12:20:37 - 3
+2022630/12:20:37 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:20:37 - Connected Socket with IOCP
+2022630/12:20:37 - Made Session by Socket
+2022630/12:20:37 - 12604 - Accept
+2022630/12:20:37 - 5300 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:20:37 - 5300 - Recv Process
+2022630/12:20:37 - PackitProc Started
+2022630/12:20:37 - Transfer to Manager : 1
+2022630/12:20:37 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:20:37 - Last Manager : 2
+2022630/12:20:37 - 5300 - Recv Process Completed
+2022630/12:20:37 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:20:37 - 12604 - Send Process
+2022630/12:20:37 - 12604 - Send Process Completed
+2022630/12:20:46 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:20:46 - 12604 - Recv Process
+2022630/12:20:46 - PackitProc Started
+2022630/12:20:46 - Transfer to Manager : 2
+2022630/12:20:46 - LOBBYManager Data
+LBProtocol  - 146
+2022630/12:20:46 - Process move to LoginManager
+2022630/12:20:46 - LoginManager Data
+Transferred From  - 2
+LGSI - 1
+
+2022630/12:20:46 - JTC : 76
+2022630/12:20:46 - Last Manager : 3
+2022630/12:20:46 - 12604 - Recv Process Completed
+2022630/12:20:46 - 5300 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:20:46 - 5300 - Send Process
+2022630/12:20:46 - 5300 - Send Process Completed
+2022630/12:20:57 - 5300 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:20:57 - 5300 - Recv Process
+2022630/12:20:57 - PackitProc Started
+2022630/12:20:57 - Transfer to Manager : 3
+2022630/12:20:57 - LoginManager Data
+LGSI - 76
+LGSIP - 5006
+2022630/12:20:57 - Last Manager : 3
+2022630/12:20:57 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:20:57 - 12604 - Send Process
+2022630/12:20:57 - 12604 - Send Process Completed
+2022630/12:20:57 - 12604 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:20:57 - 12604 - Recv Process
+2022630/12:20:57 - PackitProc Started
+2022630/12:20:57 - Transfer to Manager : 4
+2022630/12:20:57 - REQUEST : DISCONNECTED
+2022630/12:20:57 - Last Manager : 4
+2022630/12:20:57 - 12604 - Recv Process Completed
+2022630/12:20:57 - 5300 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:20:57 - 5300 - Disconnect
+2022630/12:27:58 - LOG MANAGER STARTED
+2022630/12:27:58 - DBManager Created
+2022630/12:27:58 - BasicManager Created
+2022630/12:27:58 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:27:58 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:27:58 - Added -472 - 아이디 중복입니다.
+2022630/12:27:58 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:27:58 - Added -470 - 너무 짧습니다.
+2022630/12:27:58 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:27:58 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:27:58 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:27:58 - Added -466 - 에러가 없습니다.
+2022630/12:27:58 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:27:58 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:27:58 - LoginManager Created
+2022630/12:27:58 - QUERY SENDED : call joined_member();
+2022630/12:27:58 - ACCOUNT #1 : kotra|245|1
+2022630/12:27:58 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:27:58 - JOINMEBER GET COMPLETED
+2022630/12:27:58 - BasicManager Created
+2022630/12:27:58 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:27:58 - IOCP STARTED
+2022630/12:27:58 - Thread No.1 Created
+2022630/12:27:58 - Thread No.2 Created
+2022630/12:27:58 - Thread No.3 Created
+2022630/12:27:58 - Thread No.4 Created
+2022630/12:27:58 - Thread No.5 Created
+2022630/12:27:58 - Thread No.6 Created
+2022630/12:27:58 - Thread No.7 Created
+2022630/12:27:58 - Thread No.8 Created
+2022630/12:27:58 - Listen Started
+2022630/12:28:5 - Socket Accepted : 127.0.0.1:50545
+2022630/12:28:5 - 3
+2022630/12:28:5 - 3436 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:28:5 - Connected Socket with IOCP
+2022630/12:28:5 - Made Session by Socket
+2022630/12:28:5 - 3436 - Accept
+2022630/12:28:5 - 8172 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:28:5 - 8172 - Recv Process
+2022630/12:28:5 - PackitProc Started
+2022630/12:28:5 - Transfer to Manager : 1
+2022630/12:28:5 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:28:5 - Send MSG : 
+2022630/12:28:5 - Last Manager : 2
+2022630/12:28:5 - 8172 - Recv Process Completed
+2022630/12:28:5 - 3436 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:28:5 - 3436 - Send Process
+2022630/12:28:5 - 3436 - Send Process Completed
+2022630/12:28:20 - 3436 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:28:20 - WSAGetOverlappedResult()
+2022630/12:28:20 - 3436 - Disconnect
+2022630/12:28:32 - LOG MANAGER STARTED
+2022630/12:28:32 - DBManager Created
+2022630/12:28:32 - BasicManager Created
+2022630/12:28:32 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:28:32 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:28:32 - Added -472 - 아이디 중복입니다.
+2022630/12:28:32 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:28:32 - Added -470 - 너무 짧습니다.
+2022630/12:28:32 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:28:32 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:28:32 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:28:32 - Added -466 - 에러가 없습니다.
+2022630/12:28:32 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:28:32 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:28:32 - LoginManager Created
+2022630/12:28:32 - QUERY SENDED : call joined_member();
+2022630/12:28:32 - ACCOUNT #1 : kotra|245|1
+2022630/12:28:32 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:28:32 - JOINMEBER GET COMPLETED
+2022630/12:28:32 - BasicManager Created
+2022630/12:28:32 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:28:32 - IOCP STARTED
+2022630/12:28:32 - Thread No.1 Created
+2022630/12:28:32 - Thread No.2 Created
+2022630/12:28:32 - Thread No.3 Created
+2022630/12:28:32 - Thread No.4 Created
+2022630/12:28:32 - Thread No.5 Created
+2022630/12:28:32 - Thread No.6 Created
+2022630/12:28:32 - Thread No.7 Created
+2022630/12:28:32 - Thread No.8 Created
+2022630/12:28:32 - Listen Started
+2022630/12:28:36 - Socket Accepted : 127.0.0.1:50551
+2022630/12:28:36 - 3
+2022630/12:28:36 - 1880 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:28:36 - Connected Socket with IOCP
+2022630/12:28:36 - Made Session by Socket
+2022630/12:28:36 - 1880 - Accept
+2022630/12:28:36 - 13676 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:28:36 - 13676 - Recv Process
+2022630/12:28:36 - PackitProc Started
+2022630/12:28:36 - Transfer to Manager : 1
+2022630/12:28:36 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:28:36 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:28:36 - Last Manager : 2
+2022630/12:28:36 - 13676 - Recv Process Completed
+ / IO_TYPE : 2
+2022630/12:28:36 - 1880 - Send Process
+2022630/12:28:36 - 1880 - Send Process Completed
+2022630/12:30:48 - 1880 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:30:48 - WSAGetOverlappedResult()
+2022630/12:30:48 - 1880 - Disconnect
+2022630/12:30:53 - LOG MANAGER STARTED
+2022630/12:30:53 - DBManager Created
+2022630/12:30:53 - BasicManager Created
+2022630/12:30:53 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:30:53 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:30:53 - Added -472 - 아이디 중복입니다.
+2022630/12:30:53 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:30:53 - Added -470 - 너무 짧습니다.
+2022630/12:30:53 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:30:53 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:30:53 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:30:53 - Added -466 - 에러가 없습니다.
+2022630/12:30:53 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:30:53 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:30:53 - LoginManager Created
+2022630/12:30:53 - QUERY SENDED : call joined_member();
+2022630/12:30:53 - ACCOUNT #1 : kotra|245|1
+2022630/12:30:53 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:30:53 - JOINMEBER GET COMPLETED
+2022630/12:30:53 - BasicManager Created
+2022630/12:30:53 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:30:53 - IOCP STARTED
+2022630/12:30:53 - Thread No.1 Created
+2022630/12:30:53 - Thread No.2 Created
+2022630/12:30:53 - Thread No.3 Created
+2022630/12:30:53 - Thread No.4 Created
+2022630/12:30:53 - Thread No.5 Created
+2022630/12:30:53 - Thread No.6 Created
+2022630/12:30:53 - Thread No.7 Created
+2022630/12:30:53 - Thread No.8 Created
+2022630/12:30:53 - Listen Started
+2022630/12:30:56 - Socket Accepted : 127.0.0.1:50568
+2022630/12:30:56 - 3
+2022630/12:30:56 - 13264 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:30:56 - Connected Socket with IOCP
+2022630/12:30:56 - Made Session by Socket
+2022630/12:30:56 - 6344 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:30:56 - 6344 - Recv Process
+2022630/12:30:56 - PackitProc Started
+2022630/12:30:56 - Transfer to Manager : 1
+2022630/12:30:56 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:30:56 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:30:56 - Last Manager : 2
+2022630/12:30:56 - 13264 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:30:56 - 6344 - Recv Process Completed
+2022630/12:30:56 - 13264 - Send Process
+2022630/12:30:56 - 13264 - Send Process Completed
+2022630/12:35:14 - LOG MANAGER STARTED
+2022630/12:35:14 - DBManager Created
+2022630/12:35:14 - BasicManager Created
+2022630/12:35:14 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:35:14 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:35:14 - Added -472 - 아이디 중복입니다.
+2022630/12:35:14 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:35:14 - Added -470 - 너무 짧습니다.
+2022630/12:35:14 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:35:14 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:35:14 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:35:14 - Added -466 - 에러가 없습니다.
+2022630/12:35:14 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:35:14 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:35:14 - LoginManager Created
+2022630/12:35:14 - QUERY SENDED : call joined_member();
+2022630/12:35:14 - ACCOUNT #1 : kotra|245|1
+2022630/12:35:14 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:35:14 - JOINMEBER GET COMPLETED
+2022630/12:35:14 - BasicManager Created
+2022630/12:35:14 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:35:14 - IOCP STARTED
+2022630/12:35:14 - Thread No.1 Created
+2022630/12:35:14 - Thread No.2 Created
+2022630/12:35:14 - Thread No.3 Created
+2022630/12:35:14 - Thread No.4 Created
+2022630/12:35:14 - Thread No.5 Created
+2022630/12:35:14 - Thread No.6 Created
+2022630/12:35:14 - Thread No.7 Created
+2022630/12:35:14 - Thread No.8 Created
+2022630/12:35:14 - Listen Started
+2022630/12:35:19 - Socket Accepted : 127.0.0.1:50586
+2022630/12:35:19 - 3
+2022630/12:35:19 - 14112 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:35:19 - Connected Socket with IOCP
+2022630/12:35:19 - Made Session by Socket
+2022630/12:35:19 - 8284 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:35:19 - 8284 - Recv Process
+2022630/12:35:19 - PackitProc Started
+2022630/12:35:19 - Transfer to Manager : 1
+2022630/12:35:19 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:35:19 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:35:19 - Last Manager : 2
+2022630/12:35:19 - Packet Total Size : 61
+2022630/12:35:19 - 8284 - Recv Process Completed
+2022630/12:35:19 - 14112 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:35:19 - 14112 - Send Process
+2022630/12:35:19 - 14112 - Send Process Completed
+2022630/12:37:15 - LOG MANAGER STARTED
+2022630/12:37:15 - DBManager Created
+2022630/12:37:15 - BasicManager Created
+2022630/12:37:15 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:37:15 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:37:15 - Added -472 - 아이디 중복입니다.
+2022630/12:37:15 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:37:15 - Added -470 - 너무 짧습니다.
+2022630/12:37:15 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:37:15 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:37:15 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:37:15 - Added -466 - 에러가 없습니다.
+2022630/12:37:15 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:37:15 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:37:15 - LoginManager Created
+2022630/12:37:15 - QUERY SENDED : call joined_member();
+2022630/12:37:15 - ACCOUNT #1 : kotra|245|1
+2022630/12:37:15 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:37:15 - JOINMEBER GET COMPLETED
+2022630/12:37:15 - BasicManager Created
+2022630/12:37:15 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:37:15 - IOCP STARTED
+2022630/12:37:15 - Thread No.1 Created
+2022630/12:37:15 - Thread No.2 Created
+2022630/12:37:15 - Thread No.3 Created
+2022630/12:37:15 - Thread No.4 Created
+2022630/12:37:15 - Thread No.5 Created
+2022630/12:37:15 - Thread No.6 Created
+2022630/12:37:15 - Thread No.7 Created
+2022630/12:37:15 - Thread No.8 Created
+2022630/12:37:15 - Listen Started
+2022630/12:37:17 - Socket Accepted : 127.0.0.1:50598
+2022630/12:37:17 - 3
+2022630/12:37:17 - 11996 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:37:17 - Connected Socket with IOCP
+2022630/12:37:17 - Made Session by Socket
+2022630/12:37:17 - 11996 - Accept
+2022630/12:37:17 - 9832 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:37:17 - 9832 - Recv Process
+2022630/12:37:17 - PackitProc Started
+2022630/12:37:17 - Transfer to Manager : 1
+2022630/12:37:17 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:37:17 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:37:17 - Last Manager : 2
+2022630/12:37:17 - Data Total Size : 49
+2022630/12:37:17 - Packet Total Size : 61
+2022630/12:37:17 - 9832 - Recv Process Completed
+2022630/12:37:17 - 11996 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:37:17 - 11996 - Send Process
+2022630/12:37:17 - 11996 - Send Process Completed
+2022630/12:40:32 - LOG MANAGER STARTED
+2022630/12:40:32 - DBManager Created
+2022630/12:40:32 - BasicManager Created
+2022630/12:40:32 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:40:32 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:40:32 - Added -472 - 아이디 중복입니다.
+2022630/12:40:32 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:40:32 - Added -470 - 너무 짧습니다.
+2022630/12:40:32 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:40:32 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:40:32 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:40:32 - Added -466 - 에러가 없습니다.
+2022630/12:40:32 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:40:32 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:40:32 - LoginManager Created
+2022630/12:40:32 - QUERY SENDED : call joined_member();
+2022630/12:40:32 - ACCOUNT #1 : kotra|245|1
+2022630/12:40:32 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:40:32 - JOINMEBER GET COMPLETED
+2022630/12:40:32 - BasicManager Created
+2022630/12:40:32 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:40:32 - IOCP STARTED
+2022630/12:40:32 - Thread No.1 Created
+2022630/12:40:32 - Thread No.2 Created
+2022630/12:40:32 - Thread No.3 Created
+2022630/12:40:32 - Thread No.4 Created
+2022630/12:40:32 - Thread No.5 Created
+2022630/12:40:32 - Thread No.6 Created
+2022630/12:40:32 - Thread No.7 Created
+2022630/12:40:32 - Thread No.8 Created
+2022630/12:40:32 - Listen Started
+2022630/12:40:34 - Socket Accepted : 127.0.0.1:50610
+2022630/12:40:34 - 3
+2022630/12:40:34 - 6044 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:40:34 - Connected Socket with IOCP
+2022630/12:40:34 - Made Session by Socket
+2022630/12:40:34 - 6044 - Accept
+2022630/12:40:34 - 4448 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:40:34 - 4448 - Recv Process
+2022630/12:40:34 - PackitProc Started
+2022630/12:40:34 - Transfer to Manager : 1
+2022630/12:40:34 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:40:34 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:40:34 - Last Manager : 2
+2022630/12:40:34 - Data Total Size : 49
+2022630/12:40:34 - Packet Total Size : 61
+2022630/12:40:34 - 4448 - Recv Process Completed
+2022630/12:40:34 - 6044 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:40:34 - 6044 - Send Process
+2022630/12:40:34 - 6044 - Send Process Completed
+2022630/12:40:49 - 6044 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:40:49 - 6044 - Recv Process
+2022630/12:40:49 - PackitProc Started
+2022630/12:40:49 - Transfer to Manager : 2
+2022630/12:40:49 - LOBBYManager Data
+LBProtocol  - 146
+2022630/12:40:49 - Process move to LoginManager
+2022630/12:40:49 - LoginManager Data
+Transferred From  - 2
+LGSI - 1
+
+2022630/12:40:49 - JTC : 76
+2022630/12:40:49 - Last Manager : 3
+2022630/12:40:49 - Data Total Size : 64
+2022630/12:40:49 - Packet Total Size : 76
+2022630/12:40:49 - 6044 - Recv Process Completed
+2022630/12:40:49 - 4448 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:40:49 - 4448 - Send Process
+2022630/12:40:49 - 4448 - Send Process Completed
+2022630/12:41:28 - 4448 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:41:28 - WSAGetOverlappedResult()
+2022630/12:41:28 - 4448 - Disconnect
+2022630/12:46:30 - LOG MANAGER STARTED
+2022630/12:46:30 - DBManager Created
+2022630/12:46:30 - BasicManager Created
+2022630/12:46:30 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:46:30 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:46:30 - Added -472 - 아이디 중복입니다.
+2022630/12:46:30 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:46:30 - Added -470 - 너무 짧습니다.
+2022630/12:46:30 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:46:30 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:46:30 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:46:30 - Added -466 - 에러가 없습니다.
+2022630/12:46:30 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:46:30 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:46:30 - LoginManager Created
+2022630/12:46:30 - QUERY SENDED : call joined_member();
+2022630/12:46:30 - ACCOUNT #1 : kotra|245|1
+2022630/12:46:30 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:46:30 - JOINMEBER GET COMPLETED
+2022630/12:46:30 - BasicManager Created
+2022630/12:46:30 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:46:30 - IOCP STARTED
+2022630/12:46:30 - Thread No.1 Created
+2022630/12:46:30 - Thread No.2 Created
+2022630/12:46:30 - Thread No.3 Created
+2022630/12:46:30 - Thread No.4 Created
+2022630/12:46:30 - Thread No.5 Created
+2022630/12:46:30 - Thread No.6 Created
+2022630/12:46:30 - Thread No.7 Created
+2022630/12:46:30 - Thread No.8 Created
+2022630/12:46:30 - Listen Started
+2022630/12:46:33 - Socket Accepted : 127.0.0.1:50638
+2022630/12:46:33 - 3
+2022630/12:46:33 - 7976 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:46:33 - Connected Socket with IOCP
+2022630/12:46:33 - Made Session by Socket
+2022630/12:46:33 - 7976 - Accept
+2022630/12:46:33 - 15304 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:46:33 - 15304 - Recv Process
+2022630/12:46:33 - PackitProc Started
+2022630/12:46:33 - Transfer to Manager : 1
+2022630/12:46:33 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:46:33 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:46:33 - Last Manager : 2
+2022630/12:46:33 - Data Total Size : 49
+2022630/12:46:33 - Packet Total Size : 61
+2022630/12:46:33 - 15304 - Recv Process Completed
+2022630/12:46:33 - 7976 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:46:33 - 7976 - Send Process
+2022630/12:46:33 - 7976 - Send Process Completed
+2022630/12:47:36 - LOG MANAGER STARTED
+2022630/12:47:36 - DBManager Created
+2022630/12:47:36 - BasicManager Created
+2022630/12:47:36 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:47:36 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:47:36 - Added -472 - 아이디 중복입니다.
+2022630/12:47:36 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:47:36 - Added -470 - 너무 짧습니다.
+2022630/12:47:36 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:47:36 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:47:36 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:47:36 - Added -466 - 에러가 없습니다.
+2022630/12:47:36 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:47:36 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:47:36 - LoginManager Created
+2022630/12:47:36 - QUERY SENDED : call joined_member();
+2022630/12:47:36 - ACCOUNT #1 : kotra|245|1
+2022630/12:47:36 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:47:36 - JOINMEBER GET COMPLETED
+2022630/12:47:36 - BasicManager Created
+2022630/12:47:36 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:47:36 - IOCP STARTED
+2022630/12:47:36 - Thread No.1 Created
+2022630/12:47:36 - Thread No.2 Created
+2022630/12:47:36 - Thread No.3 Created
+2022630/12:47:36 - Thread No.4 Created
+2022630/12:47:36 - Thread No.5 Created
+2022630/12:47:36 - Thread No.6 Created
+2022630/12:47:36 - Thread No.7 Created
+2022630/12:47:36 - Thread No.8 Created
+2022630/12:47:36 - Listen Started
+2022630/12:47:39 - Socket Accepted : 127.0.0.1:50644
+2022630/12:47:39 - 3
+2022630/12:47:39 - 5272 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:47:39 - Connected Socket with IOCP
+2022630/12:47:39 - Made Session by Socket
+2022630/12:47:39 - 5272 - Accept
+2022630/12:47:39 - 2316 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:47:39 - 2316 - Recv Process
+2022630/12:47:39 - PackitProc Started
+2022630/12:47:39 - Transfer to Manager : 1
+2022630/12:47:39 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:47:39 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:47:39 - Last Manager : 2
+2022630/12:47:39 - Data Total Size : 49
+2022630/12:47:39 - Packet Total Size : 61
+2022630/12:47:39 - 2316 - Recv Process Completed
+2022630/12:47:39 - 5272 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:47:39 - 5272 - Send Process
+2022630/12:47:39 - 5272 - Send Process Completed
+2022630/12:47:53 - 5272 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:47:53 - WSAGetOverlappedResult()
+2022630/12:47:53 - 5272 - Disconnect
+2022630/12:47:57 - Socket Accepted : 127.0.0.1:50646
+2022630/12:47:57 - 3
+2022630/12:47:57 - 5272 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:47:57 - Connected Socket with IOCP
+2022630/12:47:57 - Made Session by Socket
+2022630/12:47:57 - 5272 - Accept
+2022630/12:47:57 - 2316 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:47:57 - 2316 - Recv Process
+2022630/12:47:57 - PackitProc Started
+2022630/12:47:57 - Transfer to Manager : 1
+2022630/12:47:57 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:47:57 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:47:57 - Last Manager : 2
+2022630/12:47:57 - Data Total Size : 49
+2022630/12:47:57 - Packet Total Size : 61
+2022630/12:47:57 - 2316 - Recv Process Completed
+2022630/12:47:57 - 5272 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:47:57 - 5272 - Send Process
+2022630/12:47:57 - 5272 - Send Process Completed
+2022630/12:51:21 - LOG MANAGER STARTED
+2022630/12:51:21 - DBManager Created
+2022630/12:51:21 - BasicManager Created
+2022630/12:51:21 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:51:21 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:51:21 - Added -472 - 아이디 중복입니다.
+2022630/12:51:21 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:51:21 - Added -470 - 너무 짧습니다.
+2022630/12:51:21 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:51:21 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:51:21 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:51:21 - Added -466 - 에러가 없습니다.
+2022630/12:51:21 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:51:21 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:51:21 - LoginManager Created
+2022630/12:51:21 - QUERY SENDED : call joined_member();
+2022630/12:51:21 - ACCOUNT #1 : kotra|245|1
+2022630/12:51:21 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:51:21 - JOINMEBER GET COMPLETED
+2022630/12:51:21 - BasicManager Created
+2022630/12:51:21 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:51:21 - IOCP STARTED
+2022630/12:51:21 - Thread No.1 Created
+2022630/12:51:21 - Thread No.2 Created
+2022630/12:51:21 - Thread No.3 Created
+2022630/12:51:21 - Thread No.4 Created
+2022630/12:51:21 - Thread No.5 Created
+2022630/12:51:21 - Thread No.6 Created
+2022630/12:51:21 - Thread No.7 Created
+2022630/12:51:21 - Thread No.8 Created
+2022630/12:51:21 - Listen Started
+2022630/12:51:23 - Socket Accepted : 127.0.0.1:50658
+2022630/12:51:23 - 3
+2022630/12:51:23 - 15612 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:51:23 - Connected Socket with IOCP
+2022630/12:51:23 - Made Session by Socket
+2022630/12:51:23 - 15612 - Accept
+2022630/12:51:23 - 17720 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:51:23 - 17720 - Recv Process
+2022630/12:51:23 - PackitProc Started
+2022630/12:51:23 - Transfer to Manager : 1
+2022630/12:51:23 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:51:23 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:51:23 - Last Manager : 2
+2022630/12:51:23 - Data Total Size : 49
+2022630/12:51:23 - Packet Total Size : 61
+2022630/12:51:23 - 15612 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:51:23 - 15612 - Send Process
+2022630/12:51:23 - 15612 - Send Process Completed
+2022630/12:52:24 - 15612 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:52:24 - 15612 - Recv Process
+2022630/12:52:24 - PackitProc Started
+2022630/12:52:24 - Transfer to Manager : 2
+2022630/12:52:24 - LOBBYManager Data
+LBProtocol  - 146
+2022630/12:52:24 - Process move to LoginManager
+2022630/12:52:24 - LoginManager Data
+Transferred From  - 2
+LGSI - 1
+
+2022630/12:52:24 - JTC : 76
+2022630/12:52:24 - Last Manager : 3
+2022630/12:52:24 - Data Total Size : 63
+2022630/12:52:24 - Packet Total Size : 75
+2022630/12:52:24 - 15612 - Recv Process Completed
+2022630/12:52:24 - 17720 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:52:24 - 17720 - Send Process
+2022630/12:52:24 - 17720 - Send Process Completed
+2022630/12:58:53 - LOG MANAGER STARTED
+2022630/12:58:53 - DBManager Created
+2022630/12:58:53 - BasicManager Created
+2022630/12:58:53 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:58:53 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/12:58:53 - Added -472 - 아이디 중복입니다.
+2022630/12:58:53 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/12:58:53 - Added -470 - 너무 짧습니다.
+2022630/12:58:53 - Added -469 - 이미 로그인되어 있습니다.
+2022630/12:58:53 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/12:58:53 - Added -467 - 알 수 없는 오류입니다.
+2022630/12:58:53 - Added -466 - 에러가 없습니다.
+2022630/12:58:53 - Added 5007 - 로그인에 성공하였습니다.
+2022630/12:58:53 - Added 438 - 회원가입에 성공하였습니다.
+2022630/12:58:53 - LoginManager Created
+2022630/12:58:53 - QUERY SENDED : call joined_member();
+2022630/12:58:53 - ACCOUNT #1 : kotra|245|1
+2022630/12:58:53 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/12:58:53 - JOINMEBER GET COMPLETED
+2022630/12:58:53 - BasicManager Created
+2022630/12:58:53 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:58:53 - IOCP STARTED
+2022630/12:58:53 - Thread No.1 Created
+2022630/12:58:53 - Thread No.2 Created
+2022630/12:58:53 - Thread No.3 Created
+2022630/12:58:53 - Thread No.4 Created
+2022630/12:58:53 - Thread No.5 Created
+2022630/12:58:53 - Thread No.6 Created
+2022630/12:58:53 - Thread No.7 Created
+2022630/12:58:53 - Thread No.8 Created
+2022630/12:58:53 - Listen Started
+2022630/12:58:55 - Socket Accepted : 127.0.0.1:50680
+2022630/12:58:55 - 3
+2022630/12:58:55 - 6120 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/12:58:55 - Connected Socket with IOCP
+2022630/12:58:55 - Made Session by Socket
+2022630/12:58:55 - 6120 - Accept
+2022630/12:58:55 - 17000 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:58:55 - 17000 - Recv Process
+2022630/12:58:55 - PackitProc Started
+2022630/12:58:55 - Transfer to Manager : 1
+2022630/12:58:55 - LOBBYManager Data
+Transferred From  - 1
+2022630/12:58:55 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/12:58:55 - Last Manager : 2
+2022630/12:58:55 - Data Total Size : 49
+2022630/12:58:55 - Packet Total Size : 61
+2022630/12:58:55 - 17000 - Recv Process Completed
+2022630/12:58:55 - 6120 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:58:55 - 6120 - Send Process
+2022630/12:58:55 - 6120 - Send Process Completed
+2022630/12:59:7 - 6120 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:59:7 - 6120 - Recv Process
+2022630/12:59:7 - PackitProc Started
+2022630/12:59:7 - Transfer to Manager : 2
+2022630/12:59:7 - LOBBYManager Data
+LBProtocol  - 146
+2022630/12:59:7 - Process move to LoginManager
+2022630/12:59:7 - LoginManager Data
+Transferred From  - 2
+LGSI - 1
+
+2022630/12:59:7 - JTC : 76
+2022630/12:59:7 - Last Manager : 3
+2022630/12:59:7 - Data Total Size : 63
+2022630/12:59:7 - Packet Total Size : 75
+2022630/12:59:7 - 6120 - Recv Process Completed
+2022630/12:59:7 - 17000 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/12:59:7 - 17000 - Send Process
+2022630/12:59:7 - 17000 - Send Process Completed
+2022630/12:59:13 - 17000 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/12:59:13 - WSAGetOverlappedResult()
+2022630/12:59:13 - 17000 - Disconnect
+2022630/13:1:41 - LOG MANAGER STARTED
+2022630/13:1:41 - DBManager Created
+2022630/13:1:41 - BasicManager Created
+2022630/13:1:41 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/13:1:41 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/13:1:41 - Added -472 - 아이디 중복입니다.
+2022630/13:1:41 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/13:1:41 - Added -470 - 너무 짧습니다.
+2022630/13:1:41 - Added -469 - 이미 로그인되어 있습니다.
+2022630/13:1:41 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/13:1:41 - Added -467 - 알 수 없는 오류입니다.
+2022630/13:1:41 - Added -466 - 에러가 없습니다.
+2022630/13:1:41 - Added 5007 - 로그인에 성공하였습니다.
+2022630/13:1:41 - Added 438 - 회원가입에 성공하였습니다.
+2022630/13:1:41 - LoginManager Created
+2022630/13:1:41 - QUERY SENDED : call joined_member();
+2022630/13:1:41 - ACCOUNT #1 : kotra|245|1
+2022630/13:1:41 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/13:1:41 - JOINMEBER GET COMPLETED
+2022630/13:1:41 - BasicManager Created
+2022630/13:1:41 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/13:1:41 - IOCP STARTED
+2022630/13:1:41 - Thread No.1 Created
+2022630/13:1:41 - Thread No.2 Created
+2022630/13:1:41 - Thread No.3 Created
+2022630/13:1:41 - Thread No.4 Created
+2022630/13:1:41 - Thread No.5 Created
+2022630/13:1:41 - Thread No.6 Created
+2022630/13:1:41 - Thread No.7 Created
+2022630/13:1:41 - Thread No.8 Created
+2022630/13:1:41 - Listen Started
+2022630/13:1:46 - Socket Accepted : 127.0.0.1:50694
+2022630/13:1:46 - 3
+2022630/13:1:46 - 12116 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/13:1:46 - Connected Socket with IOCP
+2022630/13:1:46 - Made Session by Socket
+2022630/13:1:46 - 12116 - Accept
+2022630/13:1:46 - 10132 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/13:1:46 - 10132 - Recv Process
+2022630/13:1:46 - PackitProc Started
+2022630/13:1:46 - Transfer to Manager : 1
+2022630/13:1:46 - LOBBYManager Data
+Transferred From  - 1
+2022630/13:1:46 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/13:1:46 - Last Manager : 2
+2022630/13:1:46 - Data Total Size : 49
+2022630/13:1:46 - Packet Total Size : 61
+2022630/13:1:46 - 10132 - Recv Process Completed
+2022630/13:1:46 - 12116 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/13:1:46 - 12116 - Send Process
+2022630/13:1:46 - 12116 - Send Process Completed
+2022630/13:2:6 - 12116 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/13:2:6 - 12116 - Recv Process
+2022630/13:2:6 - PackitProc Started
+2022630/13:2:6 - Transfer to Manager : 2
+2022630/13:2:6 - LOBBYManager Data
+LBProtocol  - 146
+2022630/13:2:6 - Process move to LoginManager
+2022630/13:2:6 - LoginManager Data
+Transferred From  - 2
+LGSI - 1
+
+2022630/13:2:6 - JTC : 76
+2022630/13:2:6 - Last Manager : 3
+2022630/13:2:6 - Data Total Size : 63
+2022630/13:2:6 - Packet Total Size : 75
+2022630/13:2:6 - 12116 - Recv Process Completed
+2022630/13:2:6 - 10132 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/13:2:6 - 10132 - Send Process
+2022630/13:2:6 - 10132 - Send Process Completed
+2022630/13:2:13 - 10132 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/13:2:13 - WSAGetOverlappedResult()
+2022630/13:2:13 - 10132 - Disconnect
+2022630/13:5:42 - LOG MANAGER STARTED
+2022630/13:5:42 - DBManager Created
+2022630/13:5:42 - BasicManager Created
+2022630/13:5:42 - Added 5005 - 로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/13:5:42 - Added 436 - 회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022630/13:5:42 - Added -472 - 아이디 중복입니다.
+2022630/13:5:42 - Added -471 - 아이디와 비밀번호는 20자이내로 입력해주세요.
+2022630/13:5:42 - Added -470 - 너무 짧습니다.
+2022630/13:5:42 - Added -469 - 이미 로그인되어 있습니다.
+2022630/13:5:42 - Added -468 - 아이디 혹은 비밀번호 오류입니다.
+2022630/13:5:42 - Added -467 - 알 수 없는 오류입니다.
+2022630/13:5:42 - Added -466 - 에러가 없습니다.
+2022630/13:5:42 - Added 5007 - 로그인에 성공하였습니다.
+2022630/13:5:42 - Added 438 - 회원가입에 성공하였습니다.
+2022630/13:5:42 - LoginManager Created
+2022630/13:5:42 - QUERY SENDED : call joined_member();
+2022630/13:5:42 - ACCOUNT #1 : kotra|245|1
+2022630/13:5:42 - ACCOUNT #2 : rttg|7ujyhg|2
+2022630/13:5:42 - JOINMEBER GET COMPLETED
+2022630/13:5:42 - BasicManager Created
+2022630/13:5:42 - Added 145 - 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/13:5:42 - IOCP STARTED
+2022630/13:5:42 - Thread No.1 Created
+2022630/13:5:42 - Thread No.2 Created
+2022630/13:5:42 - Thread No.3 Created
+2022630/13:5:42 - Thread No.4 Created
+2022630/13:5:42 - Thread No.5 Created
+2022630/13:5:42 - Thread No.6 Created
+2022630/13:5:42 - Thread No.7 Created
+2022630/13:5:42 - Thread No.8 Created
+2022630/13:5:42 - Listen Started
+2022630/13:5:45 - Socket Accepted : 127.0.0.1:50708
+2022630/13:5:45 - 3
+2022630/13:5:45 - 9696 - GetQueuedCompletionStatus / IO_TYPE : 3
+2022630/13:5:45 - Connected Socket with IOCP
+2022630/13:5:45 - Made Session by Socket
+2022630/13:5:45 - 9696 - Accept
+2022630/13:5:45 - 9788 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/13:5:45 - 9788 - Recv Process
+2022630/13:5:45 - PackitProc Started
+2022630/13:5:45 - Transfer to Manager : 1
+2022630/13:5:45 - LOBBYManager Data
+Transferred From  - 1
+2022630/13:5:45 - Send MSG : 환영합니다.
+로그인은 1번.
+회원가입은 2번.
+2022630/13:5:45 - Last Manager : 2
+2022630/13:5:45 - Data Total Size : 49
+2022630/13:5:45 - Packet Total Size : 61
+2022630/13:5:45 - 9696 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/13:5:45 - 9696 - Send Process
+2022630/13:5:45 - 9788 - Recv Process Completed
+2022630/13:5:45 - 9696 - Send Process Completed
+2022630/13:5:47 - 9696 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/13:5:47 - 9696 - Recv Process
+2022630/13:5:47 - PackitProc Started
+2022630/13:5:47 - Transfer to Manager : 2
+2022630/13:5:47 - LOBBYManager Data
+LBProtocol  - 146
+2022630/13:5:47 - Process move to LoginManager
+2022630/13:5:47 - LoginManager Data
+Transferred From  - 2
+LGSI - 1
+
+2022630/13:5:47 - JTC : 76
+2022630/13:5:47 - Last Manager : 3
+2022630/13:5:47 - Data Total Size : 63
+2022630/13:5:47 - Packet Total Size : 75
+2022630/13:5:47 - 9696 - Recv Process Completed
+2022630/13:5:47 - 9788 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/13:5:47 - 9788 - Send Process
+2022630/13:5:47 - 9788 - Send Process Completed
+2022630/13:6:0 - 9788 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/13:6:0 - 9788 - Recv Process
+2022630/13:6:0 - PackitProc Started
+2022630/13:6:0 - Transfer to Manager : 3
+2022630/13:6:0 - LoginManager Data
+LGSI - 76
+LGSIP - 5006
+2022630/13:6:0 - Last Manager : 3
+2022630/13:6:0 - Data Total Size : 40
+2022630/13:6:0 - Packet Total Size : 52
+2022630/13:6:0 - 9788 - Recv Process Completed
+2022630/13:6:0 - 9696 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/13:6:0 - 9696 - Send Process
+2022630/13:6:0 - 9696 - Send Process Completed
+2022630/13:6:0 - 9696 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/13:6:0 - 9696 - Recv Process
+2022630/13:6:0 - PackitProc Started
+2022630/13:6:0 - Transfer to Manager : 4
+2022630/13:6:0 - REQUEST : DISCONNECTED
+2022630/13:6:0 - Last Manager : 4
+2022630/13:6:0 - Data Total Size : 0
+2022630/13:6:0 - Packet Total Size : 12
+2022630/13:6:0 - 9788 - GetQueuedCompletionStatus / IO_TYPE : 2
+2022630/13:6:0 - 9696 - Recv Process Completed
+2022630/13:6:0 - 9788 - Send Process
+2022630/13:6:0 - 9788 - Send Process Completed
+2022630/13:6:0 - 9788 - GetQueuedCompletionStatus / IO_TYPE : 1
+2022630/13:6:0 - 9788 - Disconnect

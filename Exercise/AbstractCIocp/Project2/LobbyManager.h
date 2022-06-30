@@ -27,6 +27,6 @@ public:
 	void UnPackData(char* From,int* p, int* sel, char* msg);
 
 	// _BASICMANAGER을(를) 통해 상속됨
-	virtual void insideProcess(int* managerNo, char* data, int* datasize) override;
-	virtual void outsideProcess(int* managerNo, char* data, int* datasize) override;
+	virtual void insideProcess(ISession* is, int* managerNo, char* data, int* datasize) override;
+	virtual void outsideProcess(ISession* is, int* managerNo, char* data, int* datasize) override;
 };

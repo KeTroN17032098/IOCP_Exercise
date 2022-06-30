@@ -72,7 +72,7 @@ void LobbyManager::UnPackData(char* From, int* p, int* sel, char* msg)
 	}
 }
 
-void LobbyManager::insideProcess(int* managerNo, char* data, int* datasize)
+void LobbyManager::insideProcess(ISession* is, int* managerNo, char* data, int* datasize)
 {
 	int a, b;
 	UnPackData(data, &a, &b, nullptr);
@@ -82,14 +82,14 @@ void LobbyManager::insideProcess(int* managerNo, char* data, int* datasize)
 		*managerNo = getNo();
 		memcpy(data, &b, sizeof(int));
 		LogManager::LogPrint("Process move to LoginManager");
-		LoginManager::GetInstance()->outsideProcess(managerNo, data, datasize);
+		LoginManager::GetInstance()->outsideProcess(is,managerNo, data, datasize);
 		memcpy(&b,data, sizeof(int));
 		LogManager::LogPrint("JTC : %d",b);
 
 	}
 }
 
-void LobbyManager::outsideProcess(int* managerNo, char* data, int* datasize)
+void LobbyManager::outsideProcess(ISession* is, int* managerNo, char* data, int* datasize)
 {
 	if (*managerNo == START)
 	{
@@ -98,6 +98,10 @@ void LobbyManager::outsideProcess(int* managerNo, char* data, int* datasize)
 		char msg[100] = "";
 		getMsg(msg, WELCOMEMSG);
 		int p = PackData(data, WELCOMEMSG, -1, msg);
+
+		memcpy(msg, data + 8, 42);
+		LogManager::LogPrint("Send MSG : %s", msg);
+
 		*datasize = p;
 		*managerNo = getNo();
 	}

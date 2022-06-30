@@ -75,15 +75,15 @@ void MainManager::recv(void* session, DWORD cbTransferred)
 		if (ptr->checkpno(b) == false)return;
 		if (a == START)
 		{
-			LobbyManager::GetInstance()->outsideProcess(&a, data, &c);
+			LobbyManager::GetInstance()->outsideProcess(ptr,&a, data, &c);
 		}
 		else if (a == LOBBY)
 		{
-			LobbyManager::GetInstance()->insideProcess(&a, data, &c);
+			LobbyManager::GetInstance()->insideProcess(ptr,&a, data, &c);
 		}
 		else if (a == LGSI)
 		{
-			LoginManager::GetInstance()->insideProcess(&a, data, &c);
+			LoginManager::GetInstance()->insideProcess(ptr,&a, data, &c);
 		}
 		else if (a == DISCONNECTED)
 		{
@@ -91,7 +91,10 @@ void MainManager::recv(void* session, DWORD cbTransferred)
 		}
 		else return;
 		LogManager::LogPrint("Last Manager : %d", a);
-		ptr->Pack(a, c, data);
+		LogManager::LogPrint("Data Total Size : %d", c);
+		int asd=ptr->Pack(a, c, data);
+		LogManager::LogPrint("Packet Total Size : %d",asd);
+
 		ptr->changeStat((STATUS)a);
 		ptr->trysend();
 	}

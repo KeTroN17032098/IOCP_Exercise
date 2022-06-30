@@ -55,6 +55,7 @@ void ISessionManager::deleteSession(SOCKET s)
 		if (*iter == tmp)
 		{
 			sessions.erase(iter);
+			if(tmp->getUUID()!=-1)LoginManager::GetInstance()->LogOut(tmp->getUUID());
 			delete tmp;
 			return;
 		}

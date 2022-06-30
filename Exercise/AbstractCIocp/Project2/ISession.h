@@ -18,6 +18,7 @@ public:
 	void changeStat(STATUS s) { stat = s; }
 	void setUUID(int a) { uuid = a; }
 	STATUS getStat() { return stat; }
+	int getUUID() { return uuid; }
 
 	bool is_me_u(int  uuid) { return (uuid == this->uuid); }
 };

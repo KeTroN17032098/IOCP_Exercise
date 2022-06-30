@@ -15,7 +15,7 @@ _BUFFER::_BUFFER(IO_TYPE iotype, int size, int psize)
 	completed = 0;
 	if (iotype == sendIO)
 	{
-		left = psize;
+		left = size;
 	}
 	else if (iotype == recvIO)
 	{

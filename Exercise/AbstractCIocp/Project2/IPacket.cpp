@@ -83,7 +83,7 @@ bool IPacket::trysend()
 
 int IPacket::Pack(int status, int datasize, char* Data)
 {
-	_BUFFER* tmp = new _BUFFER(sendIO, datasize + 12, datasize);
+	_BUFFER* tmp = new _BUFFER(sendIO, datasize + 12, datasize+12);
 	int size = sizeof(int);
 	memcpy(tmp->getresult() + size, &status, sizeof(int));
 	size += sizeof(int);

@@ -11,7 +11,7 @@ private:
 	enum LORS
 	{
 		LGIN = 76,
-		SIGNIN
+		SIGNIN,
 	};
 
 	enum LOGIN_PROTOCOL
@@ -59,11 +59,13 @@ public:
 
 	int trySignin(char* id, char* pw);//회원가입 시도
 	int tryLogin(char* id, char* pw);//로그인 시도
+	
+	void LogOut(int uuid);
 
 	int packPackit(char* Dest,int l, int p, int num, char* id, char* pw, char* msg, int e);
 	void unpackPackit(char* Data, int* l, int* p, int* num, char* id, char* pw, char* msg, int* e);
 
 	// _BASICMANAGER을(를) 통해 상속됨
-	virtual void insideProcess(int* managerNo, char* data, int* datasize) override;
-	virtual void outsideProcess(int* managerNo, char* data, int* datasize) override;
+	virtual void insideProcess(ISession* is, int* managerNo, char* data, int* datasize) override;
+	virtual void outsideProcess(ISession* is, int* managerNo, char* data, int* datasize) override;
 };
