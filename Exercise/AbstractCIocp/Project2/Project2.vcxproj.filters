@@ -32,7 +32,6 @@
       <Filter>VariousManagers</Filter>
     </ClInclude>
     <ClInclude Include="MainManager.h" />
-    <ClInclude Include="CryptoManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.h">
@@ -70,7 +69,6 @@
       <Filter>VariousManagers</Filter>
     </ClCompile>
     <ClCompile Include="MainManager.cpp" />
-    <ClCompile Include="CryptoManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="AbstractThings">
