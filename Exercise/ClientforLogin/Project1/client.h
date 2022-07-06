@@ -5,6 +5,7 @@
 #include<iostream>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include"rsa.h"
 
 #define SERVERIP   "127.0.0.1"//루프백 주소
 #define SERVERPORT 9000//서버 포트 지정
@@ -54,6 +55,28 @@ enum LOBBY_PROTOCOL
 {
 	WELCOMEMSG = 145,
 	SLECTION
+};
+
+class Crypt
+{
+private:
+	static Crypt* instance;
+
+	public_key_class pub;
+	private_key_class priv;
+
+	Crypt();
+	~Crypt();
+public:
+	static void CreateInstance();
+	static void ClearInstance();
+	static Crypt* GetInstance();
+
+	public_key_class* getPublicKey() { return &pub; }
+
+	void Encrypt(char* data, char* encrypted, int* size);//자신의 공개키로 암호화
+	void Encrypt(char* data, char* encrypted, int* size, public_key_class* key);// 입력된 공개키로 암호화
+	void Decrypt(char* Encrypted, char* data, int* size);//자신의 개인키로 복호화
 };
 
 // 소켓 함수 오류 출력 후 종료

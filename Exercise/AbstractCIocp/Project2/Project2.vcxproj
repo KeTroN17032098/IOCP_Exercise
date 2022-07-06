@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="BasicManager.h" />
     <ClInclude Include="BasicThing.h" />
+    <ClInclude Include="CryptManager.h" />
     <ClInclude Include="DBManager.h" />
     <ClInclude Include="IPacket.h" />
     <ClInclude Include="ISession.h" />
@@ -154,12 +155,14 @@
     <ClInclude Include="LoginManager.h" />
     <ClInclude Include="LogManager.h" />
     <ClInclude Include="MainManager.h" />
+    <ClInclude Include="rsa.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.cpp" />
     <ClCompile Include="AbstractIOCP.h" />
     <ClCompile Include="BasicManager.cpp" />
     <ClCompile Include="BasicThing.cpp" />
+    <ClCompile Include="CryptManager.cpp" />
     <ClCompile Include="DBManager.cpp" />
     <ClCompile Include="IPacket.cpp" />
     <ClCompile Include="ISessionManager.cpp" />
@@ -169,6 +172,7 @@
     <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainManager.cpp" />
+    <ClCompile Include="rsa.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,6 +2,7 @@
 
 #include"BasicManager.h"
 #include"LoginManager.h"
+#include"CryptManager.h"
 
 
 

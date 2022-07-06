@@ -3,7 +3,7 @@
 IPacket::IPacket(SOCKET s) : ISocket(s)
 {
 	sendbuf.clear();
-	recvbuf = new _BUFFER(recvIO, 1024, 0);
+	recvbuf = new _BUFFER(recvIO, 8192, 0);
 	recvpno = 1;
 	sendpno = 1;
 }

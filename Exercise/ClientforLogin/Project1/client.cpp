@@ -40,6 +40,52 @@ void err_display(int errcode)
 	printf("[오류] %s", (char*)lpMsgBuf);
 	LocalFree(lpMsgBuf);
 }
+Crypt* Crypt::instance = nullptr;
+
+Crypt::Crypt()
+{
+	rsa_gen_keys(&pub, &priv);
+}
+
+Crypt::~Crypt()
+{
+}
+
+void Crypt::CreateInstance()
+{
+	if (instance == nullptr)instance = new Crypt();
+}
+
+void Crypt::ClearInstance()
+{
+	if (instance != nullptr)delete instance;
+}
+
+Crypt* Crypt::GetInstance()
+{
+	return instance;
+}
+
+void Crypt::Encrypt(char* data, char* encrypted, int* size)
+{
+	encrypted = (char*)rsa_encrypt(data, *size, &pub);
+	*size = 8 * (*size);
+}
+
+void Crypt::Encrypt(char* data, char* encrypted, int* size, public_key_class* key)
+{
+	encrypted = (char*)rsa_encrypt(data, *size, key);
+	*size = 8 * (*size);
+}
+
+void Crypt::Decrypt(char* Encrypted, char* data, int* size)
+{
+	char* buf = rsa_decrypt((long long*)Encrypted, *size, &priv);
+	memcpy(data, buf, (*size) / 8);
+	*size = (*size) / 8;
+}
+
+
 
 int addDataatEndwithoutSize(char* dst, void* data, int size)
 {
@@ -433,6 +479,8 @@ int main()
 	// 데이터 통신에 사용할 변수
 	char buf[BUFSIZE + 1];//데이터 버퍼
 	char data[BUFSIZE];
+	char data1[BUFSIZE*8];
+
 	int len;//보낼 버퍼의 배열 길이
 
 	STATUS mystat = START;
@@ -441,8 +489,15 @@ int main()
 
 	pno = 1;
 
+	public_key_class serverkey;
+
+	Crypt::CreateInstance();
+
+
 	ZeroMemory(data, sizeof(data));
-	retval = packPackitB(buf, mystat, pno, 0, data);
+	memcpy(data, Crypt::GetInstance()->getPublicKey(), sizeof(public_key_class));
+	psize = sizeof(public_key_class);
+	retval = packPackitB(buf, mystat, pno, psize, data);
 
 	retval = send(sock, buf, retval, 0);
 	if (retval == SOCKET_ERROR) 
@@ -472,7 +527,6 @@ int main()
 		}
 		logPrint(logable, retval);
 
-		PackitCheck(buf, len);
 		ZeroMemory(data, sizeof(data));
 		unpackPackitB(buf, len, &mystat, &pno, &psize, data);
 		char msg[500] = "";
@@ -483,10 +537,13 @@ int main()
 			LOBBY_PROTOCOL lp;
 			int sel;
 			unpackpackitLOBBY(data, &lp, &sel, msg);
+			memcpy(&serverkey, data + psize - sizeof(public_key_class), sizeof(public_key_class));
+
 			std::cout << msg << std::endl;
 			std::cin >> sel;
 			psize = packPackitLOBBY(data, SLECTION, sel, "");
-			len = packPackitB(buf, LOBBY, pno + 1, psize, data);
+			Crypt::GetInstance()->Encrypt(data, data1, &psize);
+			len = packPackitB(buf, LOBBY, pno + 1, psize, data1);
 		}
 		else if (mystat == LGSI)
 		{
@@ -510,7 +567,8 @@ int main()
 					std::cout << "비밀번호 :";
 					std::cin >> pw;
 					psize = packPackit(data, LGIN, LOGIN_TRY, 1, id, pw, nullptr, NOERR);
-					len = packPackitB(buf, LGSI, pno + 1, psize, data);
+					Crypt::GetInstance()->Encrypt(data, data1, &psize);
+					len = packPackitB(buf, LGSI, pno + 1, psize, data1);
 				}
 				else
 				{
@@ -530,7 +588,8 @@ int main()
 					std::cout << "비밀번호 :";
 					std::cin >> pw;
 					psize = packPackit(data, SIGNIN, SIGNIN_TRY, 1, id, pw, nullptr, NOERR);
-					len = packPackitB(buf, LGSI, pno + 1, psize, data);
+					Crypt::GetInstance()->Encrypt(data, data1, &psize);
+					len = packPackitB(buf, LGSI, pno + 1, psize, data1);
 				}
 				else
 				{
@@ -544,6 +603,7 @@ int main()
 			break;
 		}
 		PackitCheck(buf, len);
+
 		retval = send(sock, buf, len, 0);
 		if (retval == SOCKET_ERROR)
 		{

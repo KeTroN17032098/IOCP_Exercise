@@ -10,6 +10,7 @@ MainManager::MainManager(bool a, char* dbip, char* dbuser, char* dbpw, char* dbn
 	DBManager::CreateInstance(dbip, dbuser, dbpw, dbname, dbport);
 	LoginManager::CreateInstance();
 	LobbyManager::CreateInstance();
+	Crypt::CreateInstance();
 	ListenSock = nullptr;
 
 }
@@ -22,6 +23,7 @@ MainManager::~MainManager()
 	LoginManager::ClearInstance();
 	LobbyManager::ClearInstance();
 	LogManager::ClearInstance();
+	Crypt::ClearInstance();
 }
 
 void MainManager::CreateInstance(bool a, char* dbip, char* dbuser, char* dbpw, char* dbname, int dbport)
@@ -67,12 +69,22 @@ void MainManager::recv(void* session, DWORD cbTransferred)
 	if (ptr->recvprogress(cbTransferred) == true)//리시브 끝남 -> 패킷 처리 ->전송
 	{
 		char data[1024] = "";
+		char data1[8192] = "";
 		int a, b, c;
 		LogManager::LogPrint("PackitProc Started");
-		ptr->UnPack(&a, &b, &c, data);
+		ptr->UnPack(&a, &b, &c, data1);
 		ptr->clearRecvbuf();
 		LogManager::LogPrint("Transfer to Manager : %d", a);
 		if (ptr->checkpno(b) == false)return;
+		if (a != START)
+		{
+			Crypt::GetInstance()->Decrypt(data1, data, &c);
+		}
+		else
+		{
+			memcpy(data, data1, c);
+		}
+
 		if (a == START)
 		{
 			LobbyManager::GetInstance()->outsideProcess(ptr,&a, data, &c);
@@ -92,7 +104,13 @@ void MainManager::recv(void* session, DWORD cbTransferred)
 		else return;
 		LogManager::LogPrint("Last Manager : %d", a);
 		LogManager::LogPrint("Data Total Size : %d", c);
-		int asd=ptr->Pack(a, c, data);
+		int asd;
+		if (a != DISCONNECTED) 
+		{
+			Crypt::GetInstance()->Encrypt(data, data1, &c,ptr->getPublicKey());
+			asd = ptr->Pack(a, c, data1);
+		}
+		else asd = ptr->Pack(a, c, data);
 		LogManager::LogPrint("Packet Total Size : %d",asd);
 
 		ptr->changeStat((STATUS)a);

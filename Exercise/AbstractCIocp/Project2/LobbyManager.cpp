@@ -95,14 +95,20 @@ void LobbyManager::outsideProcess(ISession* is, int* managerNo, char* data, int*
 	{
 		LogManager::LogPrint("LOBBYManager Data\nTransferred From  - %d",*managerNo);
 
+		public_key_class tmp;
+		memcpy(&tmp, data, sizeof(public_key_class));
+		is->setPublicKey(tmp.modulus, tmp.exponent);
+
 		char msg[100] = "";
 		getMsg(msg, WELCOMEMSG);
 		int p = PackData(data, WELCOMEMSG, -1, msg);
-
+		memcpy(data + p, Crypt::GetInstance()->getPublicKey(), sizeof(public_key_class));
 		memcpy(msg, data + 8, 42);
+		public_key_class jk;
+		memcpy(&jk, data + p, sizeof(public_key_class));
 		LogManager::LogPrint("Send MSG : %s", msg);
-
-		*datasize = p;
+		LogManager::LogPrint("Send Key : %lld %lld", jk.exponent, jk.modulus);
+		*datasize = p+sizeof(public_key_class);
 		*managerNo = getNo();
 	}
 }

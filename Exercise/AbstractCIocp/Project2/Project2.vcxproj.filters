@@ -32,6 +32,12 @@
       <Filter>VariousManagers</Filter>
     </ClInclude>
     <ClInclude Include="MainManager.h" />
+    <ClInclude Include="rsa.h">
+      <Filter>CryptLib</Filter>
+    </ClInclude>
+    <ClInclude Include="CryptManager.h">
+      <Filter>CryptLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.h">
@@ -69,6 +75,12 @@
       <Filter>VariousManagers</Filter>
     </ClCompile>
     <ClCompile Include="MainManager.cpp" />
+    <ClCompile Include="rsa.cpp">
+      <Filter>CryptLib</Filter>
+    </ClCompile>
+    <ClCompile Include="CryptManager.cpp">
+      <Filter>CryptLib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="AbstractThings">
@@ -82,6 +94,9 @@
     </Filter>
     <Filter Include="VariousManagers">
       <UniqueIdentifier>{6d5936f3-1b5d-4dfa-b71d-15f652e6c238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CryptLib">
+      <UniqueIdentifier>{7123dfa4-0a8f-48b0-b574-56c55eca53dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
