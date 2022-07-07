@@ -36,11 +36,14 @@ void Crypt::Encrypt(char* data, char* encrypted, int* size)
 
 void Crypt::Encrypt(char* data, char* encrypted, int* size, public_key_class* key)
 {
-	long long* tmp=rsa_encrypt(data, *size, key);
-	LogManager::LogPrint("Encrypted");
-	*size = 8 * (*size);
-	LogManager::LogPrint("Encrypt Size : %d", *size);
-	memcpy(encrypted, "Das", 3);
+	LogManager::LogPrint("Origin Sample : %d  %d", (int)data[0], (int)data[1]);
+
+	int k = *size * 8;	
+	long long* tmp=rsa_encrypt(data,*size, key);
+	*size = k;
+	memcpy(encrypted, tmp, k);
+	delete[] tmp;
+	LogManager::LogPrint("Encrypted Sample : %d  %d", (int)encrypted[0], (int)encrypted[1]);
 	LogManager::LogPrint("Encrypt Data Copied");
 }
 
@@ -49,4 +52,5 @@ void Crypt::Decrypt(char* Encrypted, char* data, int* size)
 	char* buf = rsa_decrypt((long long*)Encrypted, *size, &priv);
 	memcpy(data, buf, (*size) / 8);
 	*size = (*size) / 8;
+	delete[] buf;
 }

@@ -74,8 +74,11 @@ void Crypt::Encrypt(char* data, char* encrypted, int* size)
 
 void Crypt::Encrypt(char* data, char* encrypted, int* size, public_key_class* key)
 {
-	encrypted = (char*)rsa_encrypt(data, *size, key);
-	*size = 8 * (*size);
+	int k = *size * 8;
+	long long* tmp = rsa_encrypt(data, *size, key);
+	*size = k;
+	memcpy(encrypted, tmp, k);
+	delete[] tmp;
 }
 
 void Crypt::Decrypt(char* Encrypted, char* data, int* size)
@@ -83,6 +86,7 @@ void Crypt::Decrypt(char* Encrypted, char* data, int* size)
 	char* buf = rsa_decrypt((long long*)Encrypted, *size, &priv);
 	memcpy(data, buf, (*size) / 8);
 	*size = (*size) / 8;
+	delete[] buf;
 }
 
 
@@ -477,7 +481,7 @@ int main()
 	if (retval == SOCKET_ERROR) err_quit("connect()");//에러시 종료
 	
 	// 데이터 통신에 사용할 변수
-	char buf[BUFSIZE + 1];//데이터 버퍼
+	char buf[BUFSIZE*8 + 1];//데이터 버퍼
 	char data[BUFSIZE];
 	char data1[BUFSIZE*8];
 
@@ -528,21 +532,27 @@ int main()
 		logPrint(logable, retval);
 
 		ZeroMemory(data, sizeof(data));
-		unpackPackitB(buf, len, &mystat, &pno, &psize, data);
+		ZeroMemory(data1, sizeof(data1));
+
+		unpackPackitB(buf, len, &mystat, &pno, &psize, data1);
+		std::cout << (int)data1[0] << " " << (int)data1[1] << std::endl;
+		Crypt::GetInstance()->Decrypt(data1, data, &psize);
+		std::cout << (int)data[0] << " " << (int)data[1] << std::endl;
+
 		char msg[500] = "";
-		ZeroMemory(msg, sizeof(msg));
 		logPrint(logable, "UNPACKED BASIC");
 		if (mystat == LOBBY)
 		{
 			LOBBY_PROTOCOL lp;
 			int sel;
 			unpackpackitLOBBY(data, &lp, &sel, msg);
+			std::cout << lp << std::endl;
 			memcpy(&serverkey, data + psize - sizeof(public_key_class), sizeof(public_key_class));
-
+			std::cout << serverkey.exponent<<" "<<serverkey.modulus << std::endl;
 			std::cout << msg << std::endl;
 			std::cin >> sel;
 			psize = packPackitLOBBY(data, SLECTION, sel, "");
-			Crypt::GetInstance()->Encrypt(data, data1, &psize);
+			Crypt::GetInstance()->Encrypt(data, data1, &psize,&serverkey);
 			len = packPackitB(buf, LOBBY, pno + 1, psize, data1);
 		}
 		else if (mystat == LGSI)
@@ -555,7 +565,7 @@ int main()
 			int uuif;
 			unpackPackit(data, &mylrs, &lgsip, &uuif, id, pw, msg, &le);
 			if (mylrs == LGIN)
-			{
+			{	
 				logPrint(logable, "LOGIN STATUS");
 				LOGIN_PROTOCOL lp = (LOGIN_PROTOCOL)lgsip;
 				printf("%s\n", msg);
@@ -567,7 +577,7 @@ int main()
 					std::cout << "비밀번호 :";
 					std::cin >> pw;
 					psize = packPackit(data, LGIN, LOGIN_TRY, 1, id, pw, nullptr, NOERR);
-					Crypt::GetInstance()->Encrypt(data, data1, &psize);
+					Crypt::GetInstance()->Encrypt(data, data1, &psize, &serverkey);
 					len = packPackitB(buf, LGSI, pno + 1, psize, data1);
 				}
 				else
@@ -588,7 +598,7 @@ int main()
 					std::cout << "비밀번호 :";
 					std::cin >> pw;
 					psize = packPackit(data, SIGNIN, SIGNIN_TRY, 1, id, pw, nullptr, NOERR);
-					Crypt::GetInstance()->Encrypt(data, data1, &psize);
+					Crypt::GetInstance()->Encrypt(data, data1, &psize, &serverkey);
 					len = packPackitB(buf, LGSI, pno + 1, psize, data1);
 				}
 				else
@@ -602,7 +612,6 @@ int main()
 		{
 			break;
 		}
-		PackitCheck(buf, len);
 
 		retval = send(sock, buf, len, 0);
 		if (retval == SOCKET_ERROR)
@@ -612,6 +621,7 @@ int main()
 		logPrint(logable, "Send CycleCompleted");
 	}
 
+	Crypt::ClearInstance();
 	// closesocket()
 	closesocket(sock);
 

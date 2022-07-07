@@ -78,7 +78,7 @@ long long rsa_modExp(long long b, long long e, long long m)
 void rsa_gen_keys(struct public_key_class* pub, struct private_key_class* priv)
 {
     char buffer[1024] = "";
-    int i,j;
+    int i, j;
     FILE* primes_list;
     if (!(primes_list = fopen(PRIME_SOURCE_FILE, "r"))) {
         fprintf(stderr, "Problem reading %s\n", PRIME_SOURCE_FILE);
@@ -162,7 +162,7 @@ void rsa_gen_keys(struct public_key_class* pub, struct private_key_class* priv)
 long long* rsa_encrypt(const char* message, const unsigned long message_size,
     const struct public_key_class* pub)
 {
-    long long* encrypted = (long long*)malloc(sizeof(long long) * message_size);
+    long long* encrypted = new long long[message_size];
     if (encrypted == NULL) {
         fprintf(stderr,
             "Error: Heap allocation failed.\n");
@@ -170,9 +170,14 @@ long long* rsa_encrypt(const char* message, const unsigned long message_size,
     }
     long long i = 0;
     for (i = 0; i < message_size; i++) {
-        if ((encrypted[i] = rsa_modExp(message[i], pub->exponent, pub->modulus)) == -1)
+        long long a = message[i] + 128;
+        if ((encrypted[i] = rsa_modExp(a, pub->exponent, pub->modulus)) == -1)
+        {
+            printf("error");
             return NULL;
+        }
     }
+
     return encrypted;
 }
 
@@ -197,11 +202,13 @@ char* rsa_decrypt(const long long* message,
     }
     // Now we go through each 8-byte chunk and decrypt it.
     long long i = 0;
+    long long rk = 0;
     for (i = 0; i < message_size / 8; i++) {
-        if ((temp[i] = rsa_modExp(message[i], priv->exponent, priv->modulus)) == -1) {
+        if ((rk = rsa_modExp(message[i], priv->exponent, priv->modulus)) == -1) {
             free(temp);
             return NULL;
         }
+        temp[i] = (char)(rk - 128);
     }
     // The result should be a number in the char range, which gives back the original byte.
     // We put that into decrypted, then return.
