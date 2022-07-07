@@ -1,6 +1,6 @@
 #pragma once
 
-#include"ISession.h"
+#include"rsa.h"
 #include"LogManager.h"
 
 class Crypt

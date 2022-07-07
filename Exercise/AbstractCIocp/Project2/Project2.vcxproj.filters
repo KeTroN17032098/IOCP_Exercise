@@ -38,6 +38,12 @@
     <ClInclude Include="CryptManager.h">
       <Filter>CryptLib</Filter>
     </ClInclude>
+    <ClInclude Include="ProtocolManager.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractState.h">
+      <Filter>AbstractThings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.h">
@@ -81,6 +87,9 @@
     <ClCompile Include="CryptManager.cpp">
       <Filter>CryptLib</Filter>
     </ClCompile>
+    <ClCompile Include="AbstractState.cpp">
+      <Filter>AbstractThings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="AbstractThings">
@@ -97,6 +106,9 @@
     </Filter>
     <Filter Include="CryptLib">
       <UniqueIdentifier>{7123dfa4-0a8f-48b0-b574-56c55eca53dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{b5faa212-d65a-4253-b210-3782582e841a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

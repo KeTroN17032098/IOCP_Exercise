@@ -2,6 +2,7 @@
 #include"IPacket.h"
 #include"rsa.h"
 #include"LogManager.h"
+#include"AbstractState.h"
 
 class ISession : public IPacket
 {
@@ -14,6 +15,7 @@ public:
 	{
 		stat = START;
 		uuid = -1;
+		ZeroMemory(&clientkey, sizeof(public_key_class));
 	}
 
 	~ISession() {}
