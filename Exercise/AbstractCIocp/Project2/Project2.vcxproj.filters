@@ -16,9 +16,6 @@
     <ClInclude Include="IPacket.h">
       <Filter>SessionM</Filter>
     </ClInclude>
-    <ClInclude Include="DBManager.h">
-      <Filter>VariousManagers</Filter>
-    </ClInclude>
     <ClInclude Include="LoginManager.h">
       <Filter>VariousManagers</Filter>
     </ClInclude>
@@ -28,10 +25,6 @@
     <ClInclude Include="LobbyManager.h">
       <Filter>VariousManagers</Filter>
     </ClInclude>
-    <ClInclude Include="LogManager.h">
-      <Filter>VariousManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="MainManager.h" />
     <ClInclude Include="rsa.h">
       <Filter>CryptLib</Filter>
     </ClInclude>
@@ -41,8 +34,17 @@
     <ClInclude Include="ProtocolManager.h">
       <Filter>Protocol</Filter>
     </ClInclude>
+    <ClInclude Include="DBManager.h">
+      <Filter>DBM</Filter>
+    </ClInclude>
+    <ClInclude Include="LogManager.h">
+      <Filter>LOGM</Filter>
+    </ClInclude>
+    <ClInclude Include="MainManager.h">
+      <Filter>Main</Filter>
+    </ClInclude>
     <ClInclude Include="AbstractState.h">
-      <Filter>AbstractThings</Filter>
+      <Filter>State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -64,10 +66,6 @@
     <ClCompile Include="IPacket.cpp">
       <Filter>SessionM</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="DBManager.cpp">
-      <Filter>VariousManagers</Filter>
-    </ClCompile>
     <ClCompile Include="LoginManager.cpp">
       <Filter>VariousManagers</Filter>
     </ClCompile>
@@ -77,18 +75,32 @@
     <ClCompile Include="LobbyManager.cpp">
       <Filter>VariousManagers</Filter>
     </ClCompile>
-    <ClCompile Include="LogManager.cpp">
-      <Filter>VariousManagers</Filter>
-    </ClCompile>
-    <ClCompile Include="MainManager.cpp" />
     <ClCompile Include="rsa.cpp">
       <Filter>CryptLib</Filter>
     </ClCompile>
     <ClCompile Include="CryptManager.cpp">
       <Filter>CryptLib</Filter>
     </ClCompile>
-    <ClCompile Include="AbstractState.cpp">
-      <Filter>AbstractThings</Filter>
+    <ClCompile Include="DBManager.cpp">
+      <Filter>DBM</Filter>
+    </ClCompile>
+    <ClCompile Include="LogManager.cpp">
+      <Filter>LOGM</Filter>
+    </ClCompile>
+    <ClCompile Include="MainManager.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolManager.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="VariousStates.h">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="VariousStates.cpp">
+      <Filter>State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +121,18 @@
     </Filter>
     <Filter Include="Protocol">
       <UniqueIdentifier>{b5faa212-d65a-4253-b210-3782582e841a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DBM">
+      <UniqueIdentifier>{ac6ffe0d-333c-4a2b-a08a-ea4b1d41bbc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LOGM">
+      <UniqueIdentifier>{6c2637a9-6184-4b9c-a51b-dbc11c4dec29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{df1d0eda-9ff2-45c5-b525-0a58fa9bf3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{49ce5d55-3b86-4a52-a831-e2f029576c32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

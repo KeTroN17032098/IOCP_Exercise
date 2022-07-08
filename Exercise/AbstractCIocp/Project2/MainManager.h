@@ -2,6 +2,7 @@
 #include"AbstractIOCP.h"
 #include"ISessionManager.h"
 #include"LobbyManager.h"
+#include"LoginManager.h"
 
 class MainManager : public _VIRTUALIOCP
 {

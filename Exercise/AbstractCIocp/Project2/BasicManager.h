@@ -4,12 +4,14 @@
 #include"ISession.h"
 #include<map>
 #include<string>
+#include"AbstractState.h"
+#include"ProtocolManager.h"
 
 class _BASICMANAGER
 {
 private:
 	std::map<int, std::string> msgmap;
-	int myNo;
+	STATUS myNo;
 
 public:
 	virtual ~_BASICMANAGER();
@@ -19,6 +21,5 @@ public:
 	void addMsg(int a, char* b);
 	void getMsg(char* out, int in);
 	int getNo();
-	virtual void insideProcess(ISession* is,int* managerNo,char* data, int* datasize) abstract;
-	virtual void outsideProcess(ISession* is,int* managerNo, char* data, int* datasize) abstract;
+	virtual void Process(ISession* is,int* managerNo,char* data, int* datasize) abstract;
 };

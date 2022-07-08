@@ -2,14 +2,13 @@
 
 LobbyManager* LobbyManager::instance = nullptr;
 
-LobbyManager::LobbyManager() : _BASICMANAGER(LOBBY)
+LobbyManager::LobbyManager() : _BASICMANAGER((int)STATUS::LOBBY)
 {
-	addMsg(WELCOMEMSG, "환영합니다.\n로그인은 1번.\n회원가입은 2번.");
 }
 
 LobbyManager::~LobbyManager()
 {
-	ClearMap();
+	_BASICMANAGER::ClearMap();
 }
 
 void LobbyManager::CreateInstance()
@@ -31,84 +30,76 @@ LobbyManager* LobbyManager::GetInstance()
 	return instance;
 }
 
-int LobbyManager::PackData(char* data, int p, int sel, char* msg)
+int LobbyManager::PackData(char* data, int m, int s, char* msg)
 {
 	int size = 0;
-	memcpy(data + size, &p, sizeof(int));
-	size += sizeof(int);
-	if (p ==SLECTION)
+	PROTOCOL tmp = 0;
+	ProtocolManager::GetInstance()->AddMainPart(&tmp, m);
+	ProtocolManager::GetInstance()->AddSubPart(&tmp, s);
+	PROTOCOL_DETAIL tmpd = 0;
+	if (m == (int)LOBBY_PROTOCOL::REQ_LOBBYDATA)
 	{
-		memcpy(data + size, &sel, sizeof(int));
-		size += sizeof(int);
+		if (s == (int)LOBBYDATA_PROTOCOL::PROFILE)
+		{
+			tmpd = 0;
+		}
 	}
-	if (p == WELCOMEMSG)
+	else if (m == (int)LOBBY_PROTOCOL::LOBBYDATA)
+	{
+		if (s == (int)LOBBYDATA_PROTOCOL::PROFILE)
+		{
+			tmpd |= (int)LOBBYMANAGER_DETAIL::MSG;
+		}
+	}
+	ProtocolManager::GetInstance()->AddDetailPart(&tmp, tmpd);
+	memcpy(data + size, &tmp, sizeof(PROTOCOL));
+	size += sizeof(PROTOCOL);
+	if (tmpd & (int)LOBBYMANAGER_DETAIL::MSG)
 	{
 		int msgsize = strlen(msg);
 		memcpy(data + size, &msgsize, sizeof(int));
 		size += sizeof(int);
-		memcpy(data + size, msg,msgsize);
+		memcpy(data + size, msg, msgsize);
 		size += msgsize;
 	}
 	return size;
 }
 
-void LobbyManager::UnPackData(char* From, int* p, int* sel, char* msg)
+void LobbyManager::UnPackData(char* From, int* m, int* s, char* msg)
 {
 	int size = 0;
-	memcpy(p, From + size, sizeof(int));
-	size += sizeof(int);
-	if (*p == SLECTION)
-	{
-		memcpy(sel, From + size, sizeof(int));
-		size += sizeof(int);
-	}
-	if (*p == WELCOMEMSG)
+	PROTOCOL tmp = 0;
+	PROTOCOL_DETAIL tmpd = 0;
+	memcpy(&tmp, From + size, sizeof(PROTOCOL));
+	size += sizeof(PROTOCOL);
+	*m = ProtocolManager::GetInstance()->GetMainPart(tmp);
+	*s = ProtocolManager::GetInstance()->GetSubPart(tmp);
+	tmpd = ProtocolManager::GetInstance()->GetDetailPart(tmp);
+
+	if (tmpd & (int)LOBBYMANAGER_DETAIL::MSG)
 	{
 		int msgsize = 0;
-		memcpy(&msgsize,From+size,sizeof(int));
+		memcpy(&msgsize, From + size, sizeof(int));
 		size += sizeof(int);
-		memcpy(msg,From+size,msgsize);
+		memcpy(msg, From + size, msgsize);
 		size += msgsize;
 	}
 }
 
-void LobbyManager::insideProcess(ISession* is, int* managerNo, char* data, int* datasize)
+
+
+void LobbyManager::Process(ISession* is, int* managerNo, char* data, int* datasize)
 {
 	int a, b;
 	UnPackData(data, &a, &b, nullptr);
 	LogManager::LogPrint("LOBBYManager Data\nLBProtocol  - %d", a);
-	if (a == SLECTION)
+	if (a == (int)LOBBY_PROTOCOL::REQ_LOBBYDATA)
 	{
-		*managerNo = getNo();
-		memcpy(data, &b, sizeof(int));
-		LogManager::LogPrint("Process move to LoginManager");
-		LoginManager::GetInstance()->outsideProcess(is,managerNo, data, datasize);
-		memcpy(&b,data, sizeof(int));
-		LogManager::LogPrint("JTC : %d",b);
-
-	}
-}
-
-void LobbyManager::outsideProcess(ISession* is, int* managerNo, char* data, int* datasize)
-{
-	if (*managerNo == START)
-	{
-		LogManager::LogPrint("LOBBYManager Data\nTransferred From  - %d",*managerNo);
-
-		public_key_class tmp;
-		memcpy(&tmp, data, sizeof(public_key_class));
-		is->setPublicKey(tmp.modulus, tmp.exponent);
-
-		char msg[100] = "";
-		getMsg(msg, WELCOMEMSG);
-		int p = PackData(data, WELCOMEMSG, -1, msg);
-		memcpy(data + p, Crypt::GetInstance()->getPublicKey(), sizeof(public_key_class));
-		memcpy(msg, data + 8, 42);
-		public_key_class jk;
-		memcpy(&jk, data + p, sizeof(public_key_class));
-		LogManager::LogPrint("Send MSG : %s", msg);
-		LogManager::LogPrint("Send Key : %lld %lld", jk.exponent, jk.modulus);
-		*datasize = p+sizeof(public_key_class);
-		*managerNo = getNo();
+		if (b == (int)LOBBYDATA_PROTOCOL::PROFILE)
+		{
+			int k = PackData(data, (int)LOBBY_PROTOCOL::LOBBYDATA, (int)LOBBYDATA_PROTOCOL::PROFILE, "현재 준비중입니다.");
+			*datasize = k;
+			*managerNo = _BASICMANAGER::getNo();
+		}
 	}
 }

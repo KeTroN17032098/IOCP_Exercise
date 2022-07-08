@@ -1,7 +1,7 @@
 #pragma once
 
 #include"BasicManager.h"
-#include"LoginManager.h"
+#include"ProtocolManager.h"
 #include"CryptManager.h"
 
 
@@ -13,10 +13,19 @@ private:
 	LobbyManager();
 	~LobbyManager();
 
-	enum LOBBY_PROTOCOL
+	enum class LOBBY_PROTOCOL
 	{
-		WELCOMEMSG = 145,
-		SLECTION
+		REQ_LOBBYDATA=29,
+		LOBBYDATA
+	};
+	enum class LOBBYDATA_PROTOCOL
+	{
+		PROFILE=54,
+
+	};
+	enum class LOBBYMANAGER_DETAIL
+	{
+		MSG=1,
 	};
 
 public:
@@ -24,10 +33,9 @@ public:
 	static void ClearInstance();
 	static LobbyManager* GetInstance();
 
-	int PackData(char* data,int p, int sel, char* msg);
-	void UnPackData(char* From,int* p, int* sel, char* msg);
+	int PackData(char* data,int m,int s, char* msg);
+	void UnPackData(char* From, int* m, int* s, char* msg);
 
 	// _BASICMANAGER을(를) 통해 상속됨
-	virtual void insideProcess(ISession* is, int* managerNo, char* data, int* datasize) override;
-	virtual void outsideProcess(ISession* is, int* managerNo, char* data, int* datasize) override;
+	virtual void Process(ISession* is, int* managerNo, char* data, int* datasize) override;
 };

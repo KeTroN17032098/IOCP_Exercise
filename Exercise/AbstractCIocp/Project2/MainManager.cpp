@@ -68,52 +68,6 @@ void MainManager::recv(void* session, DWORD cbTransferred)
 	ISession* ptr = (ISession*)session;
 	if (ptr->recvprogress(cbTransferred) == true)//리시브 끝남 -> 패킷 처리 ->전송
 	{
-		char data[1024] = "";
-		char data1[8192] = "";
-		int a, b, c;
-		LogManager::LogPrint("PackitProc Started");
-		ptr->UnPack(&a, &b, &c, data1);
-		ptr->clearRecvbuf();
-		LogManager::LogPrint("Transfer to Manager : %d", a);
-		if (ptr->checkpno(b) == false)return;
-		if (a != START)
-		{
-			Crypt::GetInstance()->Decrypt(data1, data, &c);
-		}
-		else
-		{
-			memcpy(data, data1, c);
-		}
-
-		if (a == START)
-		{
-			LobbyManager::GetInstance()->outsideProcess(ptr,&a, data, &c);
-		}
-		else if (a == LOBBY)
-		{
-			LobbyManager::GetInstance()->insideProcess(ptr,&a, data, &c);
-		}
-		else if (a == LGSI)
-		{
-			LoginManager::GetInstance()->insideProcess(ptr,&a, data, &c);
-		}
-		else if (a == DISCONNECTED)
-		{
-			LogManager::LogPrint("REQUEST : DISCONNECTED");
-		}
-		else return;
-		LogManager::LogPrint("Last Manager : %d", a);
-		LogManager::LogPrint("Data Total Size : %d", c);
-		int asd;
-		if (a != DISCONNECTED) 
-		{
-			Crypt::GetInstance()->Encrypt(data, data1, &c,ptr->getPublicKey());
-			asd = ptr->Pack(a, c, data1);
-		}
-		else asd = ptr->Pack(a, c, data);
-		LogManager::LogPrint("Packet Total Size : %d",asd);
-
-		ptr->changeStat((STATUS)a);
 		ptr->trysend();
 	}
 	else//리시브 덜 됨 -> 수신 계속
@@ -127,7 +81,10 @@ void MainManager::send(void* session, DWORD cbTransferred)
 	ISession* ptr = (ISession*)session;
 	ptr->sendprogress(cbTransferred);
 	if (ptr->is_sendleft() == true)ptr->trysend();
-	else ptr->tryrecv();
+	else
+	{
+		//state->send()
+	}
 }
 
 void MainManager::disconnect(int retval, void* session)

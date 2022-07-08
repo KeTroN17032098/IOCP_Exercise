@@ -8,7 +8,7 @@ _BASICMANAGER::~_BASICMANAGER()
 
 _BASICMANAGER::_BASICMANAGER(int no)
 {
-	myNo = no;
+	myNo = (STATUS)no;
 	msgmap.clear();
 	LogManager::LogPrint("BasicManager Created");
 }
@@ -38,5 +38,5 @@ void _BASICMANAGER::getMsg(char* out, int in)
 
 int _BASICMANAGER::getNo()
 {
-	return myNo;
+	return (int)myNo;
 }

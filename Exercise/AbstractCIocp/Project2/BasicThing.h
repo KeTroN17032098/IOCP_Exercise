@@ -7,18 +7,22 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
-enum STATUS
+enum class STATUS
 {
-	START = 1,
+	LOGIN=1,
 	LOBBY,
-	LGSI,
-	DISCONNECTED
+	DISCONNECT
+};
+enum class ENCRYPTED
+{
+	Y=1,
+	N
 };
 
 
-enum IO_TYPE
+enum class IO_TYPE
 {
-	recvIO = 1,
+	recvIO=1,
 	sendIO,
 	acceptIO,
 

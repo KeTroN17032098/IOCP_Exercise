@@ -162,7 +162,6 @@
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.cpp" />
     <ClCompile Include="AbstractIOCP.h" />
-    <ClCompile Include="AbstractState.cpp" />
     <ClCompile Include="BasicManager.cpp" />
     <ClCompile Include="BasicThing.cpp" />
     <ClCompile Include="CryptManager.cpp" />
@@ -175,7 +174,10 @@
     <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainManager.cpp" />
+    <ClCompile Include="ProtocolManager.cpp" />
     <ClCompile Include="rsa.cpp" />
+    <ClCompile Include="VariousStates.cpp" />
+    <ClCompile Include="VariousStates.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

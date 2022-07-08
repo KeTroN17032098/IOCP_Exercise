@@ -8,29 +8,37 @@
 class LoginManager : public _BASICMANAGER
 {
 private:
-	enum LORS
+	enum class LORS
 	{
-		LGIN = 76,
-		SIGNIN,
+		SELCTION=76,
+		LOGIN,
+		SIGNIN
 	};
 
-	enum LOGIN_PROTOCOL
+	enum class SELECTION
 	{
-		LOGIN_MSG = 5005,
+		REQ_SELECTIONMSG=32,
+		SELECTION_MSG,
+		SELECTION_SET
+	};
+
+	enum class LOGIN_PROTOCOL
+	{
+		LOGIN_MSG = 25,
 		LOGIN_TRY,
 		LOGIN_SUCCESS,
 		LOGIN_ERROR
 	};
 
-	enum SIGNIN_PROTOCOL
+	enum class SIGNIN_PROTOCOL
 	{
-		SIGNIN_MSG = 436,
+		SIGNIN_MSG = 42,
 		SIGNIN_TRY,
 		SIGNIN_SUCCESS,
 		SIGNIN_ERROR
 	};
 
-	enum LGIN_SGIN_ERR
+	enum class LOGINMANAGER_ERR
 	{
 		MULTIPLEID = -472,// 회원가입 아이디중복
 		LENGTHLIMIT,// 최대 길이 초과
@@ -39,6 +47,15 @@ private:
 		NOMATCH,//아이디 혹은 비밀번호 오류
 		UNKNOWNERR,//알수없는 오류
 		NOERR//오류 없음
+	};
+
+	enum class LOGINMANAGER_DETAIL
+	{
+		NUMBER=1,
+		MSG=1<<1,
+		ERRCODE=1<<2,
+		IDPW=1<<3,
+		PUBLICKEY=1<<4
 	};
 
 	static LoginManager* instance;
@@ -62,10 +79,9 @@ public:
 	
 	void LogOut(int uuid);
 
-	int packPackit(char* Dest,int l, int p, int num, char* id, char* pw, char* msg, int e);
-	void unpackPackit(char* Data, int* l, int* p, int* num, char* id, char* pw, char* msg, int* e);
+	int packPackit(char* Dest,int l, int p, int num, char* id, char* pw, char* msg, int e,public_key_class* pub);
+	void unpackPackit(char* Data, int* l, int* p, int* num, char* id, char* pw, char* msg, int* e, public_key_class* pub);
 
 	// _BASICMANAGER을(를) 통해 상속됨
-	virtual void insideProcess(ISession* is, int* managerNo, char* data, int* datasize) override;
-	virtual void outsideProcess(ISession* is, int* managerNo, char* data, int* datasize) override;
+	virtual void Process(ISession* is, int* managerNo, char* data, int* datasize) override;
 };
