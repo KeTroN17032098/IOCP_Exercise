@@ -13,11 +13,11 @@ _BUFFER::_BUFFER(IO_TYPE iotype, int size, int psize)
 	buf = new char[size];
 	buftsize = size;
 	completed = 0;
-	if (iotype == sendIO)
+	if (iotype == IO_TYPE::sendIO)
 	{
 		left = size;
 	}
-	else if (iotype == recvIO)
+	else if (iotype == IO_TYPE::recvIO)
 	{
 		left = size;
 	}

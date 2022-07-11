@@ -68,7 +68,7 @@ void MainManager::recv(void* session, DWORD cbTransferred)
 	ISession* ptr = (ISession*)session;
 	if (ptr->recvprogress(cbTransferred) == true)//리시브 끝남 -> 패킷 처리 ->전송
 	{
-		ptr->trysend();
+		ptr->getState()->Recv(ptr);
 	}
 	else//리시브 덜 됨 -> 수신 계속
 	{
@@ -84,6 +84,7 @@ void MainManager::send(void* session, DWORD cbTransferred)
 	else
 	{
 		//state->send()
+		ptr->getState()->Send(ptr);
 	}
 }
 

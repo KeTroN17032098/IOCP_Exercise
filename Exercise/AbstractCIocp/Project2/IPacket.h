@@ -1,5 +1,6 @@
 #pragma once
 #include"ISocket.h"
+#include"ProtocolManager.h"
 
 class IPacket : public ISocket
 {

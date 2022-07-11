@@ -8,9 +8,9 @@ ISocket::ISocket(SOCKET s)
 	ZeroMemory(&ex1, sizeof(ExOverlapped));
 	ZeroMemory(&ex2, sizeof(ExOverlapped));
 	ex1.clientLP = this;
-	ex1.type = recvIO;
+	ex1.type = IO_TYPE::recvIO;
 	ex2.clientLP = this;
-	ex2.type = sendIO;
+	ex2.type = IO_TYPE::sendIO;
 }
 
 ISocket::~ISocket()

@@ -1,6 +1,7 @@
 #pragma once
 #include"ISession.h"
 #include"LoginManager.h"
+#include"VariousStates.h"
 
 class ISessionManager
 {

@@ -3,7 +3,7 @@
 IPacket::IPacket(SOCKET s) : ISocket(s)
 {
 	sendbuf.clear();
-	recvbuf = new _BUFFER(recvIO, 8192, 0);
+	recvbuf = new _BUFFER(IO_TYPE::recvIO, 8192, 0);
 	recvpno = 1;
 	sendpno = 1;
 }
@@ -83,10 +83,13 @@ bool IPacket::trysend()
 
 int IPacket::Pack(int status, int datasize, char* Data)
 {
-	_BUFFER* tmp = new _BUFFER(sendIO, datasize + 12, datasize+12);
+	_BUFFER* tmp = new _BUFFER(IO_TYPE::sendIO, datasize + 8+sizeof(PROTOCOL), datasize + 8 + sizeof(PROTOCOL));
 	int size = sizeof(int);
-	memcpy(tmp->getresult() + size, &status, sizeof(int));
-	size += sizeof(int);
+	PROTOCOL ardf = 0;
+	ProtocolManager::GetInstance()->AddMainPart(&ardf, status);
+	ProtocolManager::GetInstance()->AddDetailPart(&ardf, (int)ENCRYPTED::Y);
+	memcpy(tmp->getresult() + size, &ardf, sizeof(int));
+	size += sizeof(PROTOCOL);
 	memcpy(tmp->getresult() + size, &sendpno, sizeof(int));
 	size += sizeof(int);
 	memcpy(tmp->getresult() + size, Data, datasize);
@@ -101,8 +104,10 @@ void IPacket::UnPack(int* status, int* recvpno, int* datasize, char* Data)
 {
 	int packitsize = recvbuf->getcompleted();
 	int size = sizeof(int);
-	memcpy(status, recvbuf->getresult() + size, sizeof(int));
-	size += sizeof(STATUS);
+	PROTOCOL ardf = 0;
+	memcpy(&ardf, recvbuf->getresult() + size, sizeof(int));
+	size += sizeof(PROTOCOL);
+	*status=ProtocolManager::GetInstance()->GetMainPart(ardf);
 	memcpy(recvpno, recvbuf->getresult() + size, sizeof(int));
 	size += sizeof(int);
 	memcpy(Data, recvbuf->getresult() + size, packitsize - size);

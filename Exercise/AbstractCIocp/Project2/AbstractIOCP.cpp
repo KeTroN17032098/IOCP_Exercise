@@ -18,7 +18,7 @@ DWORD __stdcall _VIRTUALIOCP::WorkerThread(LPVOID arg)
 		IO_TYPE iotype = ptrk->type;
 		LogManager::LogPrint("%d - GetQueuedCompletionStatus / IO_TYPE : %d", myH,iotype);
 
-		if (cbTransferred == -27 && iotype == acceptIO)//accept老 版快
+		if (cbTransferred == -27 && iotype == IO_TYPE::acceptIO)//accept老 版快
 		{
 			vi->accept(client_sock, vi->hcp);
 			LogManager::LogPrint("%d - Accept", myH);
@@ -33,14 +33,14 @@ DWORD __stdcall _VIRTUALIOCP::WorkerThread(LPVOID arg)
 		}
 
 		//肯丰等 菩哦 贸府
-		if (iotype == recvIO)
+		if (iotype == IO_TYPE::recvIO)
 		{
 			LogManager::LogPrint("%d - Recv Process", myH);
 			vi->recv(ptr, cbTransferred);
 			LogManager::LogPrint("%d - Recv Process Completed", myH);
 
 		}
-		else if (iotype == sendIO)
+		else if (iotype == IO_TYPE::sendIO)
 		{
 			LogManager::LogPrint("%d - Send Process", myH);
 			vi->send(ptr, cbTransferred);
@@ -57,8 +57,7 @@ _VIRTUALIOCP::_VIRTUALIOCP()
 	hcp = NULL;
 	ZeroMemory(&accept_overlapped, sizeof(ExOverlapped));
 	accept_overlapped.clientLP = this;
-	accept_overlapped.type = acceptIO;
-	std::cout << accept_overlapped.type << std::endl;
+	accept_overlapped.type = IO_TYPE::acceptIO;
 }
 
 _VIRTUALIOCP::~_VIRTUALIOCP()

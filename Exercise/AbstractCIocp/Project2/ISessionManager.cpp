@@ -43,6 +43,8 @@ ISession* ISessionManager::findbyuuid(int i)
 void ISessionManager::addSession(SOCKET s)
 {
 	ISession* tmp = new ISession(s);
+	tmp->addState((int)STATUS::LOBBY, new LobbyState());
+	tmp->addState((int)STATUS::LOGIN, new LoginState());
 	sessions.push_back(tmp);
 }
 
