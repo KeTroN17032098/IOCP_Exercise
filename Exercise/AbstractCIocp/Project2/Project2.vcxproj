@@ -146,6 +146,7 @@
     <ClInclude Include="AbstractState.h" />
     <ClInclude Include="BasicManager.h" />
     <ClInclude Include="BasicThing.h" />
+    <ClInclude Include="CCS.h" />
     <ClInclude Include="CryptManager.h" />
     <ClInclude Include="DBManager.h" />
     <ClInclude Include="IPacket.h" />

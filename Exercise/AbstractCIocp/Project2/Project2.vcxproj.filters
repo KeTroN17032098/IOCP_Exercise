@@ -46,6 +46,9 @@
     <ClInclude Include="AbstractState.h">
       <Filter>State</Filter>
     </ClInclude>
+    <ClInclude Include="CCS.h">
+      <Filter>CriticalSection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.h">
@@ -133,6 +136,9 @@
     </Filter>
     <Filter Include="State">
       <UniqueIdentifier>{49ce5d55-3b86-4a52-a831-e2f029576c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CriticalSection">
+      <UniqueIdentifier>{eb500bcb-c5f6-4778-a461-f6dea50e961e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

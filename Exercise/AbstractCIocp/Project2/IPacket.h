@@ -1,6 +1,7 @@
 #pragma once
 #include"ISocket.h"
 #include"ProtocolManager.h"
+#include"CCS.h"
 
 class IPacket : public ISocket
 {
@@ -8,7 +9,7 @@ class IPacket : public ISocket
 	_BUFFER* recvbuf;
 	int recvpno;
 	int sendpno;
-
+	CCS ccs;
 public:
 	IPacket(SOCKET s);
 	virtual ~IPacket();

@@ -1,6 +1,7 @@
 #pragma once
 #include"basicthing.h"
 
+
 class ISocket
 {
 private:
