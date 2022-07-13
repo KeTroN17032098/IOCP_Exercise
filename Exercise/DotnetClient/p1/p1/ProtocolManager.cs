@@ -11,6 +11,7 @@ namespace p1
     using PROTOCOL_SUB = Byte;
     using PROTOCOL_DETAIL = UInt16;
 
+
     class ProtocolManager
     {
         private static ProtocolManager instance = null;

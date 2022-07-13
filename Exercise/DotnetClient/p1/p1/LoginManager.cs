@@ -57,5 +57,12 @@ namespace p1
             IDPW = 1 << 3,
             PUBLICKEY = 1 << 4
         };
+
+        public LoginManager()
+        {
+
+        }
+
+
     }
 }

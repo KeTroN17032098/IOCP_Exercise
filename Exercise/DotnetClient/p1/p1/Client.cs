@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using System.Threading;
+using System.IO;
 
 namespace p1
 {
+ 
+
     class Client
     {
         private static Client instance;
@@ -18,41 +21,65 @@ namespace p1
 
         private TcpClient tc;
         private NetworkStream stream;
+
+        private byte[] recvbuf,sendbuf;
+
+
         private Client(string ip,int port)
         {
             tc = new TcpClient(ip, port);
             stream = tc.GetStream();
+            recvbuf = new byte[8192];
+            sendbuf = new byte[8192];
         }
 
-        public void Recv(MyBuffer b)
+        public int RecvPacket(ref byte[] vs)
         {
-            int nbytes = 0;
-            byte[] packetsize = new byte[4];
-            while (nbytes == 4)
+            /*
+             NetworkStream으로 부터 패킷을 읽어온다. 소켓이 닫혔을 경우 0을, 에러발생시 -1을 리턴
+             */
+            System.Array.Clear(recvbuf, 0, 8192);
+            byte[] sizearray = new byte[4];
+            int size = 0;
+            try 
             {
-                nbytes += stream.Read(packetsize, nbytes, 4-nbytes);
+                int retval = stream.Read(sizearray, 0, 4);
+                if(retval==0)
+                {
+                    Console.WriteLine("Socket Disconnected");
+                    return 0;
+                }
+                size = BitConverter.ToInt32(sizearray, 0);
+                retval = stream.Read(recvbuf, 4,size-4);
+                if (retval == 0)
+                {
+                    Console.WriteLine("Socket Disconnected");
+                    return 0;
+                }
+                Buffer.BlockCopy(sizearray, 0, recvbuf, 0, 4);
+                Array.Copy(recvbuf, vs, size);
             }
-            int psize = BitConverter.ToInt32(packetsize, 0);
-            stream.Read(b.GetBuf, 4, psize - 4);
-            Buffer.BlockCopy(packetsize, 0, b.GetBuf, 0, 4);
-        }
-
-        public void Send(MyBuffer b)
-        {
-            stream.Write(b.GetBuf, b.GetCompleted, b.GetLeft);
-        }
-
-
-        public static void RecvThread(object obj)
-        {
-            MyBuffer recvbuf = obj as MyBuffer;
-            while (true)
+            catch(IOException e)
             {
-                instance.Recv(recvbuf);
-                Thread.Sleep(10);
+                Console.WriteLine(e.Message);
+                return -1;
             }
+            return size;
         }
 
+        public bool SendPacket(byte[] packet,int size)
+        {
+            System.Array.Clear(sendbuf, 0, 8192);
+            Buffer.BlockCopy(packet, 0, sendbuf, 0, size);
+
+            try { stream.Write(sendbuf, 0, size); }
+            catch(IOException e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+            return true;
+        }
 
         ~Client()
         {
