@@ -33,7 +33,7 @@ namespace p1
             sendbuf = new byte[8192];
         }
 
-        public int RecvPacket(ref byte[] vs)
+        public int RecvPacket(out byte[] vs)
         {
             /*
              NetworkStream으로 부터 패킷을 읽어온다. 소켓이 닫혔을 경우 0을, 에러발생시 -1을 리턴
@@ -47,6 +47,7 @@ namespace p1
                 if(retval==0)
                 {
                     Console.WriteLine("Socket Disconnected");
+                    vs = null;
                     return 0;
                 }
                 size = BitConverter.ToInt32(sizearray, 0);
@@ -54,17 +55,22 @@ namespace p1
                 if (retval == 0)
                 {
                     Console.WriteLine("Socket Disconnected");
+                    vs = null;
                     return 0;
                 }
                 Buffer.BlockCopy(sizearray, 0, recvbuf, 0, 4);
-                Array.Copy(recvbuf, vs, size);
+                byte[] tmp = new byte[size];
+                Array.Copy(recvbuf,tmp, size);
+                vs = tmp;
+                return size;
+
             }
             catch(IOException e)
             {
                 Console.WriteLine(e.Message);
+                vs = null;
                 return -1;
             }
-            return size;
         }
 
         public bool SendPacket(byte[] packet,int size)
