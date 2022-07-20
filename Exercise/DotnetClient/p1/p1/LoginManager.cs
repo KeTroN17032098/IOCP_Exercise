@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace p1
 {
@@ -60,9 +56,110 @@ namespace p1
 
         public LoginManager()
         {
-
         }
 
+        private int PackData(ref byte[] data,in LORS l,in Byte p,in int num,in string id,in string pw,in string msg,in LOGINMANAGER_ERR e,in Int64 modulus,in Int64 exponent)
+        {
+            int size = 0;
+            UInt32 protocol = 0;
+            ProtocolManager.GetInstance().AddMain(ref protocol, (byte)l);
+            ProtocolManager.GetInstance().AddSub(ref protocol,p);
+            Byte tmpd = 0;
+            if (l == LORS.SELCTION)
+            {
+                if (p == (int)SELECTION.REQ_SELECTIONMSG)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.MSG | (int)LOGINMANAGER_DETAIL.PUBLICKEY);
+                }
+                else if (p == (int)SELECTION.SELECTION_MSG)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.MSG | (int)LOGINMANAGER_DETAIL.PUBLICKEY);
+                }
+                else if (p == (int)SELECTION.SELECTION_SET)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.NUMBER);
+                }
+            }
+            else if (l == LORS.LOGIN)
+            {
+                if (p == (Byte)LOGIN_PROTOCOL.LOGIN_MSG)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.MSG);
+                }
+                else if (p == (int)LOGIN_PROTOCOL.LOGIN_TRY)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.IDPW);
+                }
+                else if (p == (int)LOGIN_PROTOCOL.LOGIN_SUCCESS)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.NUMBER | (int)LOGINMANAGER_DETAIL.MSG);
+                }
+                else if (p == (int)LOGIN_PROTOCOL.LOGIN_ERROR)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.ERRCODE | (int)LOGINMANAGER_DETAIL.MSG);
+                }
+            }
+            else if (l == LORS.SIGNIN)
+            {
+                if (p == (int)SIGNIN_PROTOCOL.SIGNIN_MSG)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.MSG);
+                }
+                else if (p == (int)SIGNIN_PROTOCOL.SIGNIN_TRY)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.IDPW);
+                }
+                else if (p == (int)SIGNIN_PROTOCOL.SIGNIN_SUCCESS)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.NUMBER | (int)LOGINMANAGER_DETAIL.MSG);
+                }
+                else if (p == (int)SIGNIN_PROTOCOL.SIGNIN_ERROR)
+                {
+                    tmpd = ((int)LOGINMANAGER_DETAIL.ERRCODE | (int)LOGINMANAGER_DETAIL.MSG);
+                }
+            }
+            ProtocolManager.GetInstance().AddDetail(ref protocol, tmpd);
+            Buffer.BlockCopy(BitConverter.GetBytes(protocol), 0, data, 0, sizeof(UInt32));
+            size += sizeof(UInt32);
+            if ((tmpd & (byte)LOGINMANAGER_DETAIL.NUMBER)!=0)
+            {
+                Buffer.BlockCopy(BitConverter.GetBytes(num), 0, data, size, sizeof(int));
+                size += sizeof(int);
+            }
+            if ((tmpd & (int)LOGINMANAGER_DETAIL.MSG)!=0)
+            {
+                int msgsize = msg.Length;
+                memcpy(Dest + size, &msgsize, sizeof(int));
+                size += sizeof(int);
+                memcpy(Dest + size, msg, msgsize);
+                size += msgsize;
+            }
+            if ((tmpd & (int)LOGINMANAGER_DETAIL.ERRCODE)!=0)
+            {
+                memcpy(Dest + size, &e, sizeof(int));
+                size += sizeof(int);
+            }
+            if ((tmpd & (int)LOGINMANAGER_DETAIL.IDPW)!=0)
+            {
+                int msgsize = strlen(id);
+                memcpy(Dest + size, &msgsize, sizeof(int));
+                size += sizeof(int);
+                memcpy(Dest + size, id, msgsize);
+                size += msgsize;
+                msgsize = strlen(pw);
+                memcpy(Dest + size, &msgsize, sizeof(int));
+                size += sizeof(int);
+                memcpy(Dest + size, pw, msgsize);
+                size += msgsize;
+            }
+            if ((tmpd & (int)LOGINMANAGER_DETAIL.PUBLICKEY) != 0)
+            {
+                int keysize = sizeof(public_key_class);
+                memcpy(Dest + size, pub, keysize);
+                size += keysize;
+            }
+            return size;
+        }
 
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="LoginManager.cs" />
     <Compile Include="MainProgram.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="MyInfo.cs" />
     <Compile Include="PacketManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtocolManager.cs" />

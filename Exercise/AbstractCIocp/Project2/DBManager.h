@@ -39,5 +39,5 @@ public:
 		}
 	}
 	LoginInfo** getJoinedMember(int* count);
-	int getNewUUID(char* id, char* pw);
+	int getNewUUID(sentence* id, sentence* pw);
 };

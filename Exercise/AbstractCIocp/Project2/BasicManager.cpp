@@ -2,6 +2,12 @@
 
 _BASICMANAGER::~_BASICMANAGER()
 {
+	std::map<int, sentence*>::iterator iter;
+	for (iter = msgmap.begin(); iter != msgmap.end(); iter++)
+	{
+		sentence* tmp = (*iter).second;
+		delete tmp;
+	}
 	msgmap.clear();
 	LogManager::LogPrint("BasicManager Deleted");
 }
@@ -24,16 +30,18 @@ int _BASICMANAGER::MapSize()
 	return msgmap.size();
 }
 
-void _BASICMANAGER::addMsg(int a, char* b)
+void _BASICMANAGER::addMsg(int a, sentence* b)
 {
-	std::string tmp = b;
-	msgmap.insert(std::make_pair(a,b));
-	LogManager::LogPrint("Added %d - %s",a,b);
+	sentence* tmp = new sentence[200];
+	wcscpy(tmp, b);
+	msgmap.insert(std::make_pair(a,tmp));
+	LogManager::LogPrint("Added %d for msg",a);
+	LogManager::LogPrint(b);
 }
 
-void _BASICMANAGER::getMsg(char* out, int in)
+void _BASICMANAGER::getMsg(sentence* out, int in)
 {
-	strcpy(out, msgmap.find(in)->second.c_str());
+	wcscpy(out, msgmap.find(in)->second);
 }
 
 int _BASICMANAGER::getNo()

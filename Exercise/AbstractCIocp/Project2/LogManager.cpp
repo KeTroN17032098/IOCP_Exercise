@@ -10,6 +10,7 @@ LogManager::LogManager(bool a)
 		filePath.append(getTodayDate());
 		filePath.append("_log.txt");
 		std::cout << filePath << std::endl;
+		key = new CCS();
 		printlog("LOG MANAGER STARTED");
 	}
 }
@@ -17,7 +18,11 @@ LogManager::LogManager(bool a)
 LogManager::~LogManager()
 {
 	printlog("LOG MANAGER END");
-	if(ak==true)filePath.clear();
+	if (ak == true) 
+	{
+		filePath.clear();
+		delete key;
+	}
 }
 
 void LogManager::CreateInstance(bool a)
@@ -44,10 +49,7 @@ LogManager* LogManager::GetInstance()
 
 void LogManager::printlog(char* fmt, ...)
 {
-	CRITICAL_SECTION crit;
-	InitializeCriticalSection(&crit);
-
-	EnterCriticalSection(&crit);
+	LockForSession lfs(this->key);
 	if (ak == true)
 	{
 		std::ofstream ofile;
@@ -65,10 +67,11 @@ void LogManager::printlog(char* fmt, ...)
 			asd.append(tmp);
 			asd.append("\n");
 			ofile.write(asd.c_str(), asd.size());
+
 			ofile.close();
+
 		}
 	}
-	LeaveCriticalSection(&crit);
 }
 
 std::string LogManager::getTodayDate()
@@ -113,9 +116,8 @@ std::string LogManager::getNow()
 
 void LogManager::LogPrint(char* fmt, ...)
 {
-	CRITICAL_SECTION crit;
-	InitializeCriticalSection(&crit);
-	EnterCriticalSection(&crit);
+	LockForSession lfs(instance->key);
+;
 	if (instance->ak == true)
 	{
 		std::ofstream ofile;
@@ -127,14 +129,31 @@ void LogManager::LogPrint(char* fmt, ...)
 			va_start(vl, fmt);
 			vsprintf_s(tmp, fmt, vl);
 			va_end(vl);
-
 			std::string asd = instance->getNow();
 			asd.append(" - ");
 			asd.append(tmp);
 			asd.append("\n");
 			ofile.write(asd.c_str(), asd.size());
+			ofile.close();		}
+	}
+
+}
+
+void LogManager::LogPrint(sentence* msg)
+{
+	LockForSession lfs(instance->key);
+	;
+	if (instance->ak == true)
+	{
+		std::wofstream ofile;
+		ofile.open(instance->filePath, std::ios_base::out | std::ios_base::app);
+		ofile.imbue(std::locale(ofile.getloc(), new std::codecvt_utf8_utf16<wchar_t>));
+		if (ofile.is_open())
+		{
+			ofile << msg << L"\n";
 			ofile.close();
+			std::cout << "dasd" << std::endl;
 		}
 	}
-	LeaveCriticalSection(&crit);
 }
+

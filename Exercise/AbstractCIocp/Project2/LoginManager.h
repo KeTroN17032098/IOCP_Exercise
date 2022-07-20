@@ -74,13 +74,13 @@ public:
 
 	void getJoinm();
 
-	int trySignin(char* id, char* pw);//회원가입 시도
-	int tryLogin(char* id, char* pw);//로그인 시도
+	int trySignin(sentence* id, sentence* pw);//회원가입 시도
+	int tryLogin(sentence* id, sentence* pw);//로그인 시도
 	
 	void LogOut(int uuid);
 
-	int packPackit(char* Dest,int l, int p, int num, char* id, char* pw, char* msg, int e,public_key_class* pub);
-	void unpackPackit(char* Data, int* l, int* p, int* num, char* id, char* pw, char* msg, int* e, public_key_class* pub);
+	int packPackit(char* Dest,int l, int p, int num, sentence* id, sentence* pw, sentence* msg, int e,public_key_class* pub);
+	void unpackPackit(char* Data, int* l, int* p, int* num, sentence* id, sentence* pw, sentence* msg, int* e, public_key_class* pub);
 
 	// _BASICMANAGER을(를) 통해 상속됨
 	virtual void Process(ISession* is, int* managerNo, char* data, int* datasize) override;

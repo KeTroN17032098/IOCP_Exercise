@@ -9,7 +9,7 @@ class IPacket : public ISocket
 	_BUFFER* recvbuf;
 	int recvpno;
 	int sendpno;
-	CCS ccs;
+	CCS* ccs;
 public:
 	IPacket(SOCKET s);
 	virtual ~IPacket();

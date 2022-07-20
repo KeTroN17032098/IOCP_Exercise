@@ -6,18 +6,18 @@ LoginManager::LoginManager(): _BASICMANAGER((int)STATUS::LOGIN)
 {
 	join_member.clear();
 	loggedin.clear();
-	_BASICMANAGER::addMsg((int)LOGIN_PROTOCOL::LOGIN_MSG, "로그인을 하시기위해 아이디와 비밀번호를 입력하세요.");
-	_BASICMANAGER::addMsg((int)SIGNIN_PROTOCOL::SIGNIN_MSG, "회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.");
-	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::MULTIPLEID, "아이디 중복입니다.");
-	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::LENGTHLIMIT, "아이디와 비밀번호는 20자이내로 입력해주세요.");
-	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::SMALLCHAR, "너무 짧습니다.");
-	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::ALREADYLGIN, "이미 로그인되어 있습니다.");
-	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::NOMATCH, "아이디 혹은 비밀번호 오류입니다.");
-	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::UNKNOWNERR, "알 수 없는 오류입니다.");
-	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::NOERR, "에러가 없습니다.");
-	_BASICMANAGER::addMsg((int)LOGIN_PROTOCOL::LOGIN_SUCCESS, "로그인에 성공하였습니다.");
-	_BASICMANAGER::addMsg((int)SIGNIN_PROTOCOL::SIGNIN_SUCCESS, "회원가입에 성공하였습니다.");
-	_BASICMANAGER::addMsg((int)SELECTION::SELECTION_MSG, "로그인하거나 회원가입을 하셔야 합니다.");
+	_BASICMANAGER::addMsg((int)LOGIN_PROTOCOL::LOGIN_MSG, L"로그인을 하시기위해 아이디와 비밀번호를 입력하세요.");
+	_BASICMANAGER::addMsg((int)SIGNIN_PROTOCOL::SIGNIN_MSG, L"회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.");
+	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::MULTIPLEID, L"아이디 중복입니다.");
+	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::LENGTHLIMIT, L"아이디와 비밀번호는 20자이내로 입력해주세요.");
+	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::SMALLCHAR, L"너무 짧습니다.");
+	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::ALREADYLGIN, L"이미 로그인되어 있습니다.");
+	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::NOMATCH, L"아이디 혹은 비밀번호 오류입니다.");
+	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::UNKNOWNERR, L"알 수 없는 오류입니다.");
+	_BASICMANAGER::addMsg((int)LOGINMANAGER_ERR::NOERR, L"에러가 없습니다.");
+	_BASICMANAGER::addMsg((int)LOGIN_PROTOCOL::LOGIN_SUCCESS, L"로그인에 성공하였습니다.");
+	_BASICMANAGER::addMsg((int)SIGNIN_PROTOCOL::SIGNIN_SUCCESS, L"회원가입에 성공하였습니다.");
+	_BASICMANAGER::addMsg((int)SELECTION::SELECTION_MSG, L"로그인하거나 회원가입을 하셔야 합니다.");
 	LogManager::LogPrint("LoginManager Created");
 	getJoinm();
 	LogManager::LogPrint("JOINMEBER GET COMPLETED");
@@ -60,13 +60,13 @@ void LoginManager::getJoinm()
 	}
 }
 
-int LoginManager::trySignin(char* id, char* pw)
+int LoginManager::trySignin(sentence* id, sentence* pw)
 {
-	if (strlen(id) == 0 || strlen(pw) == 0)return (int)LOGINMANAGER_ERR::SMALLCHAR;
-	if (strlen(id) > 20 || strlen(pw) > 20)return (int)LOGINMANAGER_ERR::LENGTHLIMIT;
+	if (wcslen(id) == 0 || wcslen(pw) == 0)return (int)LOGINMANAGER_ERR::SMALLCHAR;
+	if (wcslen(id) > 20 ||wcslen(pw) > 20)return (int)LOGINMANAGER_ERR::LENGTHLIMIT;
 	for (int i = 0; i < join_member.size(); i++)
 	{
-		if (strcmp(join_member[i]->ID, id) == 0)return (int)LOGINMANAGER_ERR::MULTIPLEID;
+		if (wcscmp(join_member[i]->ID, id) == 0)return (int)LOGINMANAGER_ERR::MULTIPLEID;
 	}
 
 	int uuid = DBManager::getinstance()->getNewUUID(id, pw);
@@ -74,8 +74,8 @@ int LoginManager::trySignin(char* id, char* pw)
 
 	LoginInfo* tmp = new LoginInfo();
 	ZeroMemory(tmp, sizeof(LoginInfo));
-	strcpy(tmp->ID, id);
-	strcpy(tmp->PW, pw);
+	wcscpy(tmp->ID, id);
+	wcscpy(tmp->PW, pw);
 	tmp->uuid = uuid;
 
 	join_member.push_back(tmp);
@@ -83,15 +83,15 @@ int LoginManager::trySignin(char* id, char* pw)
 	return tmp->uuid;
 }
 
-int LoginManager::tryLogin(char* id, char* pw)
+int LoginManager::tryLogin(sentence* id,sentence* pw)
 {
 	LoginInfo* tmp = nullptr;
 	std::deque<LoginInfo*>::iterator iter;
 	for (iter = join_member.begin(); iter != join_member.end(); iter++)
 	{
-		if (strcmp(id, (*iter)->ID) == 0)
+		if (wcscmp(id, (*iter)->ID) == 0)
 		{
-			if (strcmp(pw, (*iter)->PW) == 0)
+			if (wcscmp(pw, (*iter)->PW) == 0)
 			{
 				tmp = (*iter);
 				if (std::find(loggedin.begin(), loggedin.end(), tmp->uuid) != loggedin.end())
@@ -126,7 +126,7 @@ void LoginManager::LogOut(int uuid)
 
 
 
-int LoginManager::packPackit(char* Dest, int l, int p, int num, char* id, char* pw, char* msg, int e, public_key_class* pub)
+int LoginManager::packPackit(char* Dest, int l, int p, int num, sentence* id, sentence* pw, sentence* msg, int e, public_key_class* pub)
 {
 	int size = 0;
 	PROTOCOL tmp = 0;
@@ -196,7 +196,7 @@ int LoginManager::packPackit(char* Dest, int l, int p, int num, char* id, char* 
 	}
 	if (tmpd & (int)LOGINMANAGER_DETAIL::MSG)
 	{
-		int msgsize = strlen(msg);
+		int msgsize = wcslen(msg) * sizeof(sentence);
 		memcpy(Dest + size, &msgsize, sizeof(int));
 		size += sizeof(int);
 		memcpy(Dest + size, msg, msgsize);
@@ -209,12 +209,12 @@ int LoginManager::packPackit(char* Dest, int l, int p, int num, char* id, char* 
 	}
 	if (tmpd & (int)LOGINMANAGER_DETAIL::IDPW)
 	{
-		int msgsize = strlen(id);
+		int msgsize = wcslen(id)*sizeof(sentence);
 		memcpy(Dest + size, &msgsize, sizeof(int));
 		size += sizeof(int);
 		memcpy(Dest + size, id, msgsize);
 		size += msgsize;
-		msgsize = strlen(pw);
+		msgsize = wcslen(pw) * sizeof(sentence);
 		memcpy(Dest + size, &msgsize, sizeof(int));
 		size += sizeof(int);
 		memcpy(Dest + size, pw, msgsize);
@@ -229,7 +229,7 @@ int LoginManager::packPackit(char* Dest, int l, int p, int num, char* id, char* 
 	return size;
 }
 
-void LoginManager::unpackPackit(char* Data, int* l, int* p, int* num, char* id, char* pw, char* msg, int* e,public_key_class* pub)
+void LoginManager::unpackPackit(char* Data, int* l, int* p, int* num, sentence* id, sentence* pw, sentence* msg, int* e,public_key_class* pub)
 {
 	int size = 0;
 	PROTOCOL tmp = 0;
@@ -280,7 +280,7 @@ void LoginManager::unpackPackit(char* Data, int* l, int* p, int* num, char* id, 
 void LoginManager::Process(ISession* is, int* managerNo, char* data, int* datasize)
 {
 	int l = 0, p = 0, num = 0, e = 0;
-	char id[20] = "", pw[20] = "", msg[500] = "";
+	sentence id[20] = L"", pw[20] = L"", msg[500] = L"";
 	public_key_class pub;
 	unpackPackit(data, &l, &p, &num, id, pw, msg, &e,&pub);
 	LogManager::LogPrint("LoginManager Data\nLGSI - %d\nLGSIP - %d",l,p);

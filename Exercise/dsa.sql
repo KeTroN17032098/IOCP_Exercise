@@ -32,6 +32,7 @@ begin
     select asd;
 end //
 delimiter ;
+
 use mysql;
-create user 'root'@'%' identified by '1234';
-grant all privileges on simpleaccount.* to 'root'@'%';
+create user 'jane'@'%' identified by '1234';
+grant all privileges on simpleaccount.* to 'jane'@'%';

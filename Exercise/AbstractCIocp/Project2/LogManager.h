@@ -4,6 +4,8 @@
 #include<string>
 #include<fstream>
 #include<ctime>
+#include"CCS.h"
+#include <codecvt>
 
 class LogManager
 {
@@ -14,6 +16,7 @@ private:
 
 	std::string filePath;
 	bool ak;
+	CCS* key;
 
 public:
 	static void CreateInstance(bool a);
@@ -26,4 +29,6 @@ public:
 	std::string getNow();
 
 	static void LogPrint(char* fmt, ...);
+	static void LogPrint(sentence* msg);
+
 };

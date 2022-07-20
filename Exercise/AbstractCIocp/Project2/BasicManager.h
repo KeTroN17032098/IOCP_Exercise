@@ -3,14 +3,13 @@
 #include"LogManager.h"
 #include"ISession.h"
 #include<map>
-#include<string>
 #include"AbstractState.h"
 #include"ProtocolManager.h"
 
 class _BASICMANAGER
 {
 private:
-	std::map<int, std::string> msgmap;
+	std::map<int, sentence*> msgmap;
 	STATUS myNo;
 
 public:
@@ -18,8 +17,8 @@ public:
 	_BASICMANAGER(int no);
 	void ClearMap();
 	int MapSize();
-	void addMsg(int a, char* b);
-	void getMsg(char* out, int in);
+	void addMsg(int a, sentence* b);
+	void getMsg(sentence* out, int in);
 	int getNo();
 	virtual void Process(ISession* is,int* managerNo,char* data, int* datasize) abstract;
 };

@@ -1,0 +1,59 @@
+로그인하거나 회원가입을 하셔야 합니다.
+2022720/12:12:17 - LoginManager Created
+2022720/12:12:17 - QUERY SENDED : call joined_member();
+2022720/12:12:17 - JOINMEBER GET COMPLETED
+2022720/12:12:17 - BasicManager Created
+2022720/12:12:17 - RSA KEY Generated 131073,3522031081 || 2700299521,3522031081
+2022720/12:12:17 - IOCP STARTED
+2022720/12:12:17 - Thread No.1 Created
+2022720/12:12:17 - Thread No.2 Created
+2022720/12:12:17 - Thread No.3 Created
+2022720/12:12:17 - Thread No.4 Created
+2022720/12:12:17 - Thread No.5 Created
+2022720/12:12:17 - Thread No.6 Created
+2022720/12:12:17 - Thread No.7 Created
+2022720/12:12:17 - Thread No.8 Created
+2022720/12:12:17 - Listen Started
+2022720/12:12:54 - LOG MANAGER STARTED
+Session Manager Start
+2022720/12:12:54 - DBManager Created
+2022720/12:12:54 - BasicManager Created
+2022720/12:12:54 - Added 25 for msg
+로그인을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022720/12:12:54 - Added 42 for msg
+회원가입을 하시기위해 아이디와 비밀번호를 입력하세요.
+2022720/12:12:54 - Added -472 for msg
+아이디 중복입니다.
+2022720/12:12:54 - Added -471 for msg
+아이디와 비밀번호는 20자이내로 입력해주세요.
+2022720/12:12:54 - Added -470 for msg
+너무 짧습니다.
+2022720/12:12:54 - Added -469 for msg
+이미 로그인되어 있습니다.
+2022720/12:12:54 - Added -468 for msg
+아이디 혹은 비밀번호 오류입니다.
+2022720/12:12:54 - Added -467 for msg
+알 수 없는 오류입니다.
+2022720/12:12:54 - Added -466 for msg
+에러가 없습니다.
+2022720/12:12:54 - Added 27 for msg
+로그인에 성공하였습니다.
+2022720/12:12:54 - Added 44 for msg
+회원가입에 성공하였습니다.
+2022720/12:12:54 - Added 33 for msg
+로그인하거나 회원가입을 하셔야 합니다.
+2022720/12:12:54 - LoginManager Created
+2022720/12:12:54 - QUERY SENDED : call joined_member();
+2022720/12:12:54 - JOINMEBER GET COMPLETED
+2022720/12:12:54 - BasicManager Created
+2022720/12:12:54 - RSA KEY Generated 131073,1220383027 || 200221409,1220383027
+2022720/12:12:54 - IOCP STARTED
+2022720/12:12:54 - Thread No.1 Created
+2022720/12:12:54 - Thread No.2 Created
+2022720/12:12:54 - Thread No.3 Created
+2022720/12:12:54 - Thread No.4 Created
+2022720/12:12:54 - Thread No.5 Created
+2022720/12:12:54 - Thread No.6 Created
+2022720/12:12:54 - Thread No.7 Created
+2022720/12:12:54 - Thread No.8 Created
+2022720/12:12:54 - Listen Started

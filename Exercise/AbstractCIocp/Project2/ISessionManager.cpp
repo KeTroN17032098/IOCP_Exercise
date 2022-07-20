@@ -4,6 +4,7 @@ ISessionManager* ISessionManager::instance = nullptr;
 
 ISessionManager::ISessionManager()
 {
+	LogManager::LogPrint(L"Session Manager Start");
 	sessions.clear();
 }
 

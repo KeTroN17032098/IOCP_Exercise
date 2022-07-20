@@ -6,6 +6,7 @@ IPacket::IPacket(SOCKET s) : ISocket(s)
 	recvbuf = new _BUFFER(IO_TYPE::recvIO, 8192, 0);
 	recvpno = 1;
 	sendpno = 1;
+	ccs = new CCS();
 }
 
 IPacket::~IPacket()
@@ -18,6 +19,7 @@ IPacket::~IPacket()
 		delete tmp;
 	}
 	sendbuf.clear();
+	delete ccs;
 }
 
 bool IPacket::recvprogress(DWORD cbTransferred)
@@ -52,7 +54,7 @@ bool IPacket::recvprogress(DWORD cbTransferred)
 bool IPacket::sendprogress(DWORD cbTransferred)
 {
 	if (sendbuf.size() < 1)return false;
-	LockForSession lfs(&this->ccs);
+	LockForSession lfs(this->ccs);
 	_BUFFER* b = sendbuf.front();
 	b->fcompleted(cbTransferred);
 	if (b->is_completed() == true)//이번에 패킷을 다 보냈다면
@@ -80,7 +82,7 @@ bool IPacket::trysend()
 	}
 	else
 	{
-		LockForSession lfs(&this->ccs);
+		LockForSession lfs(this->ccs);
 		return this->send(sendbuf.front()->getbuf(), sendbuf.front()->getleft());
 		delete &lfs;
 	}

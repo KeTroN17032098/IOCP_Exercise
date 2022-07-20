@@ -19,6 +19,7 @@ enum class ENCRYPTED
 	N
 };
 
+typedef wchar_t sentence;
 
 enum class IO_TYPE
 {
@@ -51,8 +52,8 @@ public:
 
 struct LoginInfo
 {
-	char ID[20];
-	char PW[20];
+	sentence ID[20];
+	sentence PW[20];
 	int uuid;
 };
 

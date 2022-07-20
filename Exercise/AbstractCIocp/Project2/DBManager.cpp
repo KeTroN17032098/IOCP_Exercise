@@ -25,7 +25,7 @@ DBManager::DBManager(char* ip, char* user, char* pw, char* db,int port)
 		exit(-1);
 	}
 
-	if (mysql_query(&mysql, "set names 'euckr';"))
+	if (mysql_query(&mysql, "set names 'utf8';"))
 	{
 		std::cout << "MYSQL QUERY ERROR : " << mysql_error(&mysql) << std::endl;
 		exit(-1);
@@ -63,8 +63,10 @@ LoginInfo** DBManager::getJoinedMember(int* count)
 	char* stop;
 	while ((sql_row = mysql_fetch_row(sql_result)) != NULL)
 	{
-		strcpy(tmp[c]->ID, sql_row[1]);
-		strcpy(tmp[c]->PW, sql_row[2]);
+		int idsize = MultiByteToWideChar(CP_ACP, 0, sql_row[1], -1, NULL, NULL);
+		MultiByteToWideChar(CP_ACP, 0, sql_row[1], strlen(sql_row[1]) + 1, tmp[c]->ID, idsize);
+		int pwsize = MultiByteToWideChar(CP_ACP, 0, sql_row[2], -1, NULL, NULL);
+		MultiByteToWideChar(CP_ACP, 0, sql_row[2], strlen(sql_row[2]) + 1, tmp[c]->PW, pwsize);
 		tmp[c]->uuid= (int)std::strtoll(sql_row[0], &stop, 10);
 		c++;
 		LogManager::LogPrint("ACCOUNT #%d : %s|%s|%d", c, tmp[c-1]->ID, tmp[c-1]->PW, tmp[c-1]->uuid);
@@ -79,15 +81,19 @@ LoginInfo** DBManager::getJoinedMember(int* count)
 	return tmp;
 }
 
-int DBManager::getNewUUID(char* id, char* pw)
+int DBManager::getNewUUID(sentence* id, sentence* pw)
 {
 
 	int result = -1;
 	char* stop;
 	std::string quey = "call add_member('";
-	quey.append(id);
+	std::wstring wid(id);
+	std::string sid(wid.begin(), wid.end());
+	quey.append(sid);
 	quey.append("','");
-	quey.append(pw);
+	std::wstring wpw(pw);
+	std::string spw(wpw.begin(), wpw.end());
+	quey.append(spw);
 	quey.append("');");
 	LogManager::LogPrint("QUERY SENDED : %s",quey.c_str());
 

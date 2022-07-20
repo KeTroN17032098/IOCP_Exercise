@@ -40,24 +40,3 @@ public:
 		this->ccs = nullptr;
 	}
 };
-
-template<typename T>
-class Lock
-{
-	friend class Lock_Grid;
-private:
-	static CCS ccs;
-public:
-	Lock_Grid
-	{
-	public:
-		Lock_Grid()
-		{
-			Lock.css.Enter();
-		}
-		~Lock_Grid()
-		{
-			Lock.css.Leave();
-		}
-	};
-};
