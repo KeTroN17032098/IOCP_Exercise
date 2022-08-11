@@ -7,6 +7,8 @@ MainManager::MainManager(bool a, char* dbip, char* dbuser, char* dbpw, char* dbn
 	int retval;
 	LogManager::CreateInstance(a);
 	ISessionManager::createinstance();
+	ISessionManager::getinstance()->printSessionMemoryMap();
+
 	DBManager::CreateInstance(dbip, dbuser, dbpw, dbname, dbport);
 	LoginManager::CreateInstance();
 	LobbyManager::CreateInstance();
@@ -119,7 +121,8 @@ void MainManager::ListenSocketEnd()
 }
 
 void MainManager::run(int portno)
-{
+{	
+
 	init();
 	ListenSocketSet(portno);
 	ListenSock->Listen();
@@ -133,6 +136,7 @@ void MainManager::run(int portno)
 		getpeername(cs, (SOCKADDR*)&das, &sda);
 		LogManager::LogPrint( "Socket Accepted : %s:%d", inet_ntoa(das.sin_addr), ntohs(das.sin_port));
 		PostAccept(cs);
+		ISessionManager::getinstance()->printSessionMemoryMap();
 	}
 	end();
 	ListenSocketEnd();

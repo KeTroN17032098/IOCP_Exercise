@@ -30,14 +30,14 @@ ProtocolManager* ProtocolManager::GetInstance()
 
 void ProtocolManager::AddMainPart(PROTOCOL* target, PROTOCOL_MAIN main)
 {
-	PROTOCOL tmp = (PROTOCOL)main;
+	PROTOCOL tmp = static_cast<PROTOCOL>(main);
 	tmp = tmp << subsize + detailsize;
 	*target = (*target) % (1 << subsize + detailsize);
 	*target = (*target) | (main << subsize + detailsize);
 }
 void ProtocolManager::AddSubPart(PROTOCOL* target, PROTOCOL_SUB sub)
 {
-	PROTOCOL tmp = (PROTOCOL)sub;
+	PROTOCOL tmp = static_cast<PROTOCOL>(sub);
 	PROTOCOL_SUB tmps = 0;
 	~tmps;
 	*target &= ~(tmps << detailsize);
@@ -47,7 +47,7 @@ void ProtocolManager::AddSubPart(PROTOCOL* target, PROTOCOL_SUB sub)
 
 void ProtocolManager::AddDetailPart(PROTOCOL* target, PROTOCOL_DETAIL detail)
 {
-	PROTOCOL tmp = (PROTOCOL)detail;
+	PROTOCOL tmp = static_cast<PROTOCOL>(detail);
 	*target = ((*target) >> detailsize) << detailsize;
 	*target |= tmp;
 }
@@ -55,18 +55,18 @@ void ProtocolManager::AddDetailPart(PROTOCOL* target, PROTOCOL_DETAIL detail)
 PROTOCOL_MAIN ProtocolManager::GetMainPart(PROTOCOL target)
 {
 	PROTOCOL tmp = target >> detailsize + subsize;
-	return (PROTOCOL_MAIN)tmp;
+	return static_cast<PROTOCOL_MAIN>(tmp);
 }
 
 PROTOCOL_SUB ProtocolManager::GetSubPart(PROTOCOL target)
 {
 	PROTOCOL tmp = target / (1 << detailsize);
 	tmp %= (1 << subsize);
-	return (PROTOCOL_MAIN)tmp;
+	return static_cast<PROTOCOL_SUB>(tmp);
 }
 
 PROTOCOL_DETAIL ProtocolManager::GetDetailPart(PROTOCOL target)
 {
 	PROTOCOL tmp = target % (1 << detailsize);
-	return (PROTOCOL_MAIN)tmp;
+	return static_cast<PROTOCOL_DETAIL>(tmp);
 }

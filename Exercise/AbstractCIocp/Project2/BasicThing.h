@@ -6,6 +6,7 @@
 #include<deque>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include"MemPool.h"
 
 enum class STATUS
 {
@@ -29,7 +30,7 @@ enum class IO_TYPE
 
 };
 
-class _BUFFER
+class _BUFFER : public MemPool<_BUFFER,256>
 {
 private:
 	char* buf;

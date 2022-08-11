@@ -49,6 +49,9 @@
     <ClInclude Include="CCS.h">
       <Filter>CriticalSection</Filter>
     </ClInclude>
+    <ClInclude Include="MemPool.h">
+      <Filter>MemPool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractIOCP.h">
@@ -139,6 +142,9 @@
     </Filter>
     <Filter Include="CriticalSection">
       <UniqueIdentifier>{eb500bcb-c5f6-4778-a461-f6dea50e961e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MemPool">
+      <UniqueIdentifier>{79bf3000-2b51-4749-9c9e-87eed0eef518}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

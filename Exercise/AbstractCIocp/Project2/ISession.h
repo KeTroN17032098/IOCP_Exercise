@@ -3,10 +3,11 @@
 #include"rsa.h"
 #include"LogManager.h"
 #include"AbstractState.h"
+#include"MemPool.h"
 #include<map>
 
 
-class ISession : public IPacket
+class ISession : public IPacket,public MemPool<ISession>
 {
 private:
 	int uuid;
@@ -14,7 +15,7 @@ private:
 	_STATE* current_state;
 	std::map<int, _STATE*> statelist;
 public:
-	ISession(SOCKET s) :IPacket(s)
+	ISession(SOCKET s) :IPacket(s),MemPool<ISession>()
 	{
 		uuid = -1;
 		ZeroMemory(&clientkey, sizeof(public_key_class));

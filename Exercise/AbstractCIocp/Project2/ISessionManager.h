@@ -48,4 +48,8 @@ public:
 			}
 		}
 	}
+	void printSessionMemoryMap()
+	{
+		MemPool<ISession>::printBlock();
+	}
 };
